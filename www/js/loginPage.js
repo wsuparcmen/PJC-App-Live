@@ -4,7 +4,7 @@ function submitLogin() {
        var login = {
              'UserName': $('#username').val(),
              'Password': $('#password').val()};
-       //console.log(login);
+
         console.log("test");
         $.ajax({
              type: 'POST',
@@ -12,7 +12,8 @@ function submitLogin() {
              data: login,
              url: uri,
              success: function (data) {
-                  $('#data').html(data);
+				  localStorage.token = data;
+				  $('#data').html(localStorage.token);
              },
              error: function () {
                   alert('Failure');
