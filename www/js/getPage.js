@@ -1,13 +1,13 @@
 jQuery(document).ready(function () {
     jQuery('#clickme').on('click', function () {
         jQuery('#display').text("Hello worldlings!");
-		jQuery('#token').html(window.localStorage.getItem("token"));
+		jQuery('#token').text(window.localStorage.getItem("token"));
     });
 	
 	jQuery('#delete').on('click', function () {
-        jQuery('#token').html("");
+        jQuery('#token').text("");
 		window.localStorage.removeItem("token");
-		jQuery('#deletedToken').html(window.localStorage.getItem("token"));
+		jQuery('#deletedToken').text(window.localStorage.getItem("token"));
     });
 	
     var url = 'http://pjc.gear.host/api/Hello';
