@@ -1,16 +1,51 @@
+<!DOCTYPE html>
 <html>
-<head></head>
+<head>
+	<title>PARC Pocket Job Coach</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
 <body>
-    <input type="text" id="username" value="username" /><br />
-    <input type="text" id="password" value="password" /><br />
-    <button  id="submit" value="Submit" onclick="submitLogin()" >Submit</button><br />
+	<div data-role="header">
+		<h1>PARC Pocket Job Coach</h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<div class="ui-corner-all custom-corners">
+			<div class="ui-bar ui-bar-a">
+				<h3>Login</h3>
+			</div>
+
+			<div class="ui-body ui-body-a">
+				<p>
+					<label for="username">Username:</label>
+					<input type="text" name="username" id="username" placeholder="Username">
+
+					<label for="password">Password:</label>
+					<input type="password" name="password" id="password" placeholder="Password" autocomplete="off">
+
+					<fieldset data-role="controlgroup">
+						<label for="remember">Remember me?</label>
+						<input type="checkbox" name="remember" id="remember">
+					</fieldset>
+
+					<!-- forgot your username and password link -->
+
+					<button class="ui-shadow ui-btn ui-corner-all" id="submit" onclick="submitLogin()">Login</button>
+				</p>
+			</div>
+		</div>
+	</div>
 
     <a href="getPage.html">Get Page</a>
-	 <p id="data"></p>
+	<p id="data"></p>
 	
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/loginPage.js"></script>
 </body>    
 </html>
-    
