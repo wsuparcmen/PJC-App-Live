@@ -12,9 +12,7 @@ function submitLogin() {
              data: login,
              url: uri,
              success: function (data) {
-			 var token= data;
-			window.localStorage.setItem("token", data);
-				 
+			 window.localStorage.setItem("token", data);	 
 				  $('#data').html(window.localStorage.getItem("token"));
              },
              error: function () {

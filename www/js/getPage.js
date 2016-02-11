@@ -3,6 +3,9 @@ jQuery(document).ready(function () {
         jQuery('#display').text("Hello worldlings!");
 		jQuery('#token').text(window.localStorage.getItem("token"));
     });
+    
+    var AUTH_TOKEN = window.localStorage.getItem("token");
+    //var AUTH_TOKEN = "a" + window.localStorage.getItem("token");
 	
 	jQuery('#delete').on('click', function () {
         jQuery('#token').text("");
@@ -13,7 +16,7 @@ jQuery(document).ready(function () {
     var url = 'http://pjc.gear.host/api/Hello';
     $.ajax({
         type: 'GET',
-        url: url,
+        url: url + "?authenticity_token=" + AUTH_TOKEN,
         dataType: 'json',
         success: function (data, status) {
             $.each(data, function (key, item) {
@@ -21,7 +24,7 @@ jQuery(document).ready(function () {
             });
         },
         error: function () {
-            //error loading data
+            alert("something broke");
         }
     });
 
