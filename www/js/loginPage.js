@@ -6,14 +6,16 @@ function submitLogin() {
        var login = {
              'UserName': $('#username').val(),
              'Password': $('#password').val()};
+             
         $.ajax({
              type: 'POST',
              dataType: 'json',
              data: login,
              url: uri,
              success: function (data) {
-			 window.localStorage.setItem("token", data);	 
-				  $('#data').html(window.localStorage.getItem("token"));
+			 window.localStorage.setItem("token", data);
+             window.location.href = 'splash.html';
+             //$('#data').html(window.localStorage.getItem("token"));
              },
              error: function () {
                   alert('Failure');

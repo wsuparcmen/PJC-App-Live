@@ -19,6 +19,7 @@
 			</div>
 
 			<div class="ui-body ui-body-a">
+                <form>
 				<p>
 					<label for="username">Username:</label>
 					<input type="text" name="username" id="username" placeholder="Username">
@@ -33,15 +34,12 @@
 
 					<!-- forgot your username and password link -->
 
-					<button class="ui-shadow ui-btn ui-corner-all" id="submit" onclick="submitLogin()">Login</button>
+					<input type="submit" class="ui-shadow ui-btn ui-corner-all" id="submit" value="Login" onclick="submitLogin()" />
 				</p>
+                </form>
 			</div>
 		</div>
 	</div>
-
-    <a href="getPage.html" data-ajax="false">Get Page</a>
-	<p id="data"></p>
-	
     
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script>
