@@ -21,7 +21,7 @@
 -->
 <html>
     <head>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 		<script>
 			$(document).bind('mobileinit',function(){
 				$.mobile.changePage.defaults.changeHash = false;
@@ -55,9 +55,9 @@
 				<p id="token"></p>
 				<p id="deletedToken"></p>
 				<p id="successOrFailure"></p>
-				<a href="postPage.html">Go to POST Page!</a><br />
-				<a href="putPage.html">Go to PUT Page!</a><br />
-				<a href="deletePage.html">Go to DELETE Page!</a><br />
+				<a href="postPage.html" data-ajax="false">Go to POST Page!</a><br />
+				<a href="putPage.html" data-ajax="false">Go to PUT Page!</a><br />
+				<a href="deletePage.html" data-ajax="false">Go to DELETE Page!</a><br />
 				<ul id="records"></ul>
 			</div>
 		
@@ -81,7 +81,7 @@
 							</li>
 						</ul>-->
 						
-						<a href="#" class="ui-btn ui-icon-check ui-btn-icon-top">Tasks</a>
+						<a href="tasks.html" data-ajax="false" class="ui-btn ui-icon-check ui-btn-icon-top">Tasks</a>
 					</td>
 				</tr>
 				<tr>
