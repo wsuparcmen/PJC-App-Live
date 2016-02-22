@@ -18,36 +18,26 @@
 </head>
 <body>
 	<div data-role="header" data-position="fixed">
-		<a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+		<a href="splash.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
 		<h1>PARC Pocket Job Coach</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
-		<h1>Job/Routine Name</h1>
+		<h1>Job/Routine List</h1>
 		<ul data-role="listview" data-inset="true">
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #1</h2>
+			<li>
+				<a href="tasks.html" data-ajax="false">
+					<h2>Job #1</h2>
 					<p>notes or additional details</p>
 				</a>
 			</li>
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #2</h2>
-					<p>notes or additional details</p>
-				</a>
-			</li>
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #3</h2>
+			<li>
+				<a href="#tasks.html" data-ajax="false">
+					<h2>Job #2</h2>
 					<p>notes or additional details</p>
 				</a>
 			</li>
 		</ul>
-		
-		<div data-role="popup" id="testing" data-theme="a" data-overlay-theme="b" class="ui-content">
-			<a href="#" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check">Finish</a>
-		</div>
 	</div>
 	
 	<div data-role="footer" data-position="fixed">
