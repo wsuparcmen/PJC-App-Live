@@ -7,7 +7,7 @@ function submitLogin() {
        var login = {
              'UserName': $('#username').val(),
              'Password': $('#password').val(),
-             'RememberMe': true};
+             'RememberMe': $('#remember').is(':checked')};
              
         $.ajax({
              type: 'POST',
