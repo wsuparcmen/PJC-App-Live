@@ -28,9 +28,9 @@ jQuery(document).ready(function () {
     function formatItem(item) {
         return item.helloID + ":" + item.helloLanguage + ":" + item.helloMessage + ".";
     }
-    
-    logout = function() {
+    function logout() {
         window.localStorage.removeItem("token");
         window.location.href = "Login.html";
     }
+
 });
