@@ -28,9 +28,14 @@ jQuery(document).ready(function () {
     function formatItem(item) {
         return item.helloID + ":" + item.helloLanguage + ":" + item.helloMessage + ".";
     }
-    function logout() {
+    
+    /*logout = function() {
         window.localStorage.removeItem("token");
         window.location.href = "Login.html";
-    }
+    }*/
+	jQuery('#logout').on('click', function () {
+        window.localStorage.removeItem("token");
+        window.location.href = "Login.html";
+    });
 
 });
