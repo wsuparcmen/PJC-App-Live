@@ -1,12 +1,7 @@
 jQuery(document).ready(function () {
-    jQuery('#clickme').on('click', function () {
-        jQuery('#display').text("Hello worldlings!");
-		jQuery('#token').text(window.localStorage.getItem("token"));
-    });
     
     var AUTH_TOKEN = window.localStorage.getItem("token");
     var oldToken = "b33c551a";
-    //var AUTH_TOKEN = "a" + window.localStorage.getItem("token");
 	
 	jQuery('#delete').on('click', function () {
         jQuery('#token').text("");
@@ -26,11 +21,16 @@ jQuery(document).ready(function () {
             });*/
         },
         error: function () {
-            jQuery("#successOrFailure").text("FAILURE!");
+            window.location.href="Login.html";
         }
     });
 
     function formatItem(item) {
         return item.helloID + ":" + item.helloLanguage + ":" + item.helloMessage + ".";
+    }
+    
+    logout = function() {
+        window.localStorage.removeItem("token");
+        window.location.href = "Login.html";
     }
 });
