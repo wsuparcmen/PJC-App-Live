@@ -33,9 +33,27 @@
 				<label for="note">Note</label>
 				<textarea cols="40" rows="100" name="note" id="note"></textarea>
 				
-				<a href="#" class="ui-btn ui-corner-all" id="save">Save</a>
-				<a href="#" class="ui-btn ui-corner-all" id="cancel">Cancel</a>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
+				</div>
 			</form>
+			
+			<h2>Previous Notes</h2>
+			<ul data-role="listview" data-inset="true">
+				<li>
+					<a href="#" data-ajax="false">
+						<h2>Note #1</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+					</a>
+				</li>
+				<li>
+					<a href="#" data-ajax="false">
+						<h2>Note #2</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+					</a>
+				</li>
+			</ul>
 		</div>
 		
 		<div data-role="footer" data-position="fixed">
