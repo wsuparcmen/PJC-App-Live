@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="js/chromeLoading.js"></script>
+		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+
+		<title>PARC Pocket Job Coach</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+		<div data-role="header" data-position="fixed">
+			<a href="tools.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+			<h1>PARC Pocket Job Coach</h1>
+		</div>
+
+		<div data-role="main" class="ui-content">
+			<h1>Create New Note</h1>
+			
+			<form class="ui-body ui-body-a">
+				<label for="noteName">Name</label>
+				<input type="text" name="noteName" id="noteName" />
+				
+				<label for="job">Job</label>
+				<select name="job" id="job">
+					<option value="one">Job #1</option>
+					<option value="two">Job #2</option>
+					<option value="three">Job #3</option>
+				</select>
+				
+				<label for="note">Note</label>
+				<textarea cols="40" rows="100" name="note" id="note"></textarea>
+				
+				<a href="#" class="ui-btn ui-corner-all" id="save">Save</a>
+				<a href="#" class="ui-btn ui-corner-all" id="cancel">Cancel</a>
+			</form>
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="splash.html" data-ajax="false" data-icon="home">Home</a>
+					</li>
+					<li>
+						<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
+					</li>
+					<li>
+						<a href="#" data-icon="phone">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </body>
+</html>

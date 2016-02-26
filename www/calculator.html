@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="js/chromeLoading.js"></script>
+		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+
+		<title>PARC Pocket Job Coach</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+		<div data-role="header" data-position="fixed">
+			<a href="tools.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+			<h1>PARC Pocket Job Coach</h1>
+		</div>
+
+		<div data-role="main" class="ui-content">
+			<h1>Wage Calculator</h1>
+			
+			<form class="ui-body ui-body-a">
+				<p><label for="hours">How many hours did you work?</label>
+				<input type="number" name="number" pattern="[0-9]*" id="hours" /></p>
+				
+				<p><label for="wage">How much do you earn an hour? (this could probably be filled automatically based on the user)</label>
+				<input type="number" name="number" pattern="[0-9]*" id="wage" /></p>
+				
+				<a href="#" class="ui-btn ui-corner-all" id="calculate">Calculate</a>
+			</form>
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li>
+						<a href="splash.html" data-ajax="false" data-icon="home">Home</a>
+					</li>
+					<li>
+						<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
+					</li>
+					<li>
+						<a href="#" data-icon="phone">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </body>
+</html>
