@@ -39,7 +39,15 @@
     <body>
         <div data-role="header" data-position="fixed">
 			<h1>PARC Pocket Job Coach</h1>
-			<button id="logout" class="ui-btn-right ui-btn ui-btn-icon-right ui-icon-gear" onclick="logout()">Logout</button>
+			<!--<button id="logout" class="ui-btn-right ui-btn ui-btn-icon-right ui-icon-gear" onclick="logout()">Logout</button>-->
+		
+			<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+			<div data-role="popup" id="menu">
+				<ul data-role="listview" data-inset="true">
+					<li><a href="#">My Account</a></li>
+					<li><a href="#" onclick="logout()">Log Out</a></li>
+				</ul>
+			</div>
 		</div>
 		
 		<div data-role="main" class="ui-content">
