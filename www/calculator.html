@@ -6,6 +6,8 @@
 		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 
+		<script type="text/javascript" src="js/calculator.js"></script>
+		
 		<title>PARC Pocket Job Coach</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,13 +23,15 @@
 			
 			<form class="ui-body ui-body-a">
 				<p><label for="hours">How many hours did you work?</label>
-				<input type="number" name="number" pattern="[0-9]*" id="hours" /></p>
+				<input type="number" name="number" pattern="[0-9]*" id="hours" value="0" /></p>
 				
-				<p><label for="wage">How much do you earn an hour? (this could probably be filled automatically based on the user)</label>
-				<input type="number" name="number" pattern="[0-9]*" id="wage" /></p>
+				<p><label for="wage">How much do you earn an hour? (this maybe could be filled automatically based on the user)</label>
+				<input type="number" name="number" pattern="[0-9]*" id="wage" value="0" /></p>
 				
-				<a href="#" class="ui-btn ui-corner-all" id="calculate">Calculate</a>
+				<a href="#" class="ui-btn ui-corner-all" id="calculate" onclick="calculateWage()">Calculate</a>
 			</form>
+			
+			<p id="result"></p>
 		</div>
 		
 		<div data-role="footer" data-position="fixed">
