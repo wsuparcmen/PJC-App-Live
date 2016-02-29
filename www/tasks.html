@@ -27,14 +27,43 @@
 	<div data-role="main" class="ui-content">
 		<h1>Job/Routine Name</h1>
 		
+		<div data-role="collapsibleset">
 		<div data-role="collapsible" data-collapsed="false">
 			<h4>Task #1</h4>
-			
 			<div class="ui-grid-b ui-responsive">
-				<div class="ui-block-a"><p>Description........</p></div>
+				<div class="ui-block-a">
+					<h4>Description........</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+				</div>
 				<div class="ui-block-b"><a href="#" class="ui-btn">Mark Finished</a></div>
 				<div class="ui-block-c"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
 			</div>
+			
+			<label for="previousnotes"><h4>Previous Notes</h4></label>
+			<select name="previousnotes" id="previousnotes">
+				<option value="one">One</option>
+				<option value="two">Two</option>
+				<option value="three">Three</option>
+			</select>
+		</div>
+		
+		<div data-role="collapsible">
+			<h4>Task #2</h4>
+			<div class="ui-grid-b ui-responsive">
+				<div class="ui-block-a">
+					<h4>Description........</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+				</div>
+				<div class="ui-block-b"><a href="#" class="ui-btn">Mark Finished</a></div>
+				<div class="ui-block-c"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+			</div>
+			
+			<label for="previousnotes"><h4>Previous Notes</h4></label>
+			<select name="previousnotes" id="previousnotes">
+				<option value="one">One</option>
+				<option value="two">Two</option>
+			</select>
+		</div>
 		</div>
 		
 		<div data-role="popup" id="makenote" data-theme="a" data-overlay-theme="b" class="ui-content">
