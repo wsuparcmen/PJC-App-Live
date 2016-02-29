@@ -1,7 +1,7 @@
 //window.addEventListener('load', loadHandler);
 function submitLogin() {
    jQuery(document).ready(function() {
-	   var uri = 'http://pjc.gear.host/api/Login';
+	   var uri = 'http://pjcdbrebuild.gear.host/api/Login';
 	   var day = new Date();
 	   var now = day.getTime();
        var login = {
@@ -21,7 +21,8 @@ function submitLogin() {
                 //$('#data').html(window.localStorage.getItem("token"));
              },
              error: function () {
-                  alert('Failure');
+                 alert("failure");
+                  jQuery("#error").text("Username or password is incorrect");
              }
         });
    });

@@ -2,13 +2,7 @@
 <html>
 <head>
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-	<script>
-		$(document).bind('mobileinit',function(){
-			$.mobile.changePage.defaults.changeHash = false;
-			$.mobile.hashListeningEnabled = false;
-			$.mobile.pushStateEnabled = false;
-		});
-	</script>
+	<script type="text/javascript" src="js/chromeLoading.js"></script>
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 
@@ -20,6 +14,14 @@
 	<div data-role="header" data-position="fixed">
 		<a href="splash.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
 		<h1>PARC Pocket Job Coach</h1>
+		
+		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+		<div data-role="popup" id="menu">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#">My Account</a></li>
+				<li><a href="#">Log Out</a></li>
+			</ul>
+		</div>
 	</div>
 
 	<div data-role="main" class="ui-content">
@@ -50,7 +52,7 @@
 					<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
 				</li>
 				<li>
-					<a href="#" data-icon="phone">Contact</a>
+					<a href="contact.html" data-ajax="false" data-icon="phone">Contact</a>
 				</li>
 			</ul>
 		</div>
