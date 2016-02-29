@@ -26,29 +26,33 @@
 
 	<div data-role="main" class="ui-content">
 		<h1>Job/Routine Name</h1>
-		<ul data-role="listview" data-inset="true">
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #1</h2>
-					<p>notes or additional details</p>
-				</a>
-			</li>
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #2</h2>
-					<p>notes or additional details</p>
-				</a>
-			</li>
-			<li data-icon="check">
-				<a href="#testing" data-rel="popup" data-position-to="window" data-transition="pop">
-					<h2>Task #3</h2>
-					<p>notes or additional details</p>
-				</a>
-			</li>
-		</ul>
 		
-		<div data-role="popup" id="testing" data-theme="a" data-overlay-theme="b" class="ui-content">
-			<a href="#" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check">Finish</a>
+		<div data-role="collapsible" data-collapsed="false">
+			<h4>Task #1</h4>
+			
+			<div class="ui-grid-b ui-responsive">
+				<div class="ui-block-a"><p>Description........</p></div>
+				<div class="ui-block-b"><a href="#" class="ui-btn">Mark Finished</a></div>
+				<div class="ui-block-c"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+			</div>
+		</div>
+		
+		<div data-role="popup" id="makenote" data-theme="a" data-overlay-theme="b" class="ui-content">
+			<form class="ui-body ui-body-a">
+				<label for="noteName">Name</label>
+				<input type="text" name="noteName" id="noteName" />
+				
+				<p>Job Name</p>
+				<p>Task Name</p>
+				
+				<label for="note">Note</label>
+				<textarea cols="40" rows="100" name="note" id="note"></textarea>
+				
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
+				</div>
+			</form>
 		</div>
 	</div>
 	
