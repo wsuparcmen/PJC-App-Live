@@ -31,10 +31,10 @@
 			
 			<form class="ui-body ui-body-a">
 				<p><label for="hours">How many hours did you work?</label>
-				<input type="number" name="number" pattern="[0-9]*" id="hours" value="0" /></p>
+				<input type="number" pattern="[0-9]*" min="0" id="hours" value="0" /></p>
 				
 				<p><label for="wage">How much do you earn an hour? (this maybe could be filled automatically based on the user)</label>
-				<input type="number" name="number" pattern="[0-9]*" id="wage" value="0" /></p>
+				<input type="number" pattern="[0-9]*" min="0" id="wage" value="0" /></p>
 				
 				<a href="#" class="ui-btn ui-corner-all" id="calculate" onclick="calculateWage()">Calculate</a>
 			</form>
