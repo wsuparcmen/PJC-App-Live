@@ -1,4 +1,5 @@
-var uri = 'http://pjcdbrebuild.gear.host/api/';
+jQuery(document).ready(function() {
+   var uri = 'http://pjcdbrebuild.gear.host/api/';
 var loginToken = window.localStorage.getItem("token");
 
 $.ajax({
@@ -8,15 +9,16 @@ $.ajax({
         url: uri + "Routine",
         success: function (item) {
             $("<li><a href='tasks.html' data-ajax='false'>" + 
-            "<h2>" + item.routineTitle + "</h2>" + 
+            "<h2>" + item.routineTitle + "</h2></a>" + 
             "<p>Here are some notes</p>" +
             "<p>" + item.creatorUserName + "</p>" + 
-          "</a></li>").appendTo($("#routineList"));
+          "</li>").appendTo($("#routineList"));
         },
         error: function () {
             alert("failure");
             //jQuery("#error").text("Username or password is incorrect");
         }
+}); 
 });
 
 
