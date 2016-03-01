@@ -27,3 +27,9 @@ function submitLogin() {
         });
    });
 }
+
+jQuery(document).ready(function() {
+   if (window.localStorage.getItem("token") !== null) {
+        window.location.href = 'splash.html';   
+   }
+});
