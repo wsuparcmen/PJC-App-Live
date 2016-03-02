@@ -25,7 +25,7 @@
 		</div>
 
 		<div data-role="main" class="ui-content">
-			<h1>Create New Note</h1>
+			<h1>Create New User Note</h1>
 			
 			<form class="ui-body ui-body-a">
 				<label for="noteName">Name</label>
@@ -42,40 +42,48 @@
 				<textarea cols="40" rows="100" name="note" id="note"></textarea>
 				
 				<div class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
-					<div class="ui-block-b"><a href="#" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" class="ui-btn" id="cancel">Cancel</a></div>
 				</div>
 			</form>
 			
 			<h2>Previous Notes</h2>
-			<ul data-role="listview" data-inset="true">
+			<form class="ui-filterable"><input id="filternotes" data-type="search" /></form>
+			<ul data-role="listview" data-inset="true" data-filter="true" data-input="#filternotes">
 				<li>
-					<a href="#" data-ajax="false">
+					<a href="#viewnote" data-rel="popup" data-position-to="window" data-transition="pop">
 						<h2>Note #1</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
 					</a>
 				</li>
 				<li>
-					<a href="#" data-ajax="false">
+					<a href="#viewnote" data-rel="popup" data-position-to="window" data-transition="pop">
 						<h2>Note #2</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
 					</a>
 				</li>
 			</ul>
+			
+			<div data-role="popup" id="viewnote" data-theme="a" data-overlay-theme="b" class="ui-content">
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<h3>Note Name</h3>
+				<h4>Job Name, Task Name</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...
+				</p>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
+					<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
+				</div>
+			</div>
 		</div>
 		
 		<div data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
-					<li>
-						<a href="splash.html" data-ajax="false" data-icon="home">Home</a>
-					</li>
-					<li>
-						<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
-					</li>
-					<li>
-						<a href="contact.html" data-ajax="false" data-icon="phone">Contact</a>
-					</li>
+					<li><a href="splash.html" data-ajax="false" data-icon="home">Home</a></li>
+					<li><a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a></li>
+					<li><a href="contact.html" data-ajax="false" data-icon="phone">Contact</a></li>
 				</ul>
 			</div>
 		</div>

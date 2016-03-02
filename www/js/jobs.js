@@ -7,15 +7,28 @@ $.ajax({
         dataType: 'json',
         data: {token: loginToken},
         url: uri + "Routine",
-        success: function (item) {
-            $("<li><a href='tasks.html' data-ajax='false'>" + 
-            "<h2>" + item.routineTitle + "</h2></a>" + 
-            "<p>Here are some notes</p>" +
-            "<p>" + item.creatorUserName + "</p>" + 
-          "</li>").appendTo($("#routineList"));
+        success: function (data) {
+            $.each(data, function(key, item) {
+                 $("<li>" +
+				"<a href='tasks.html' data-ajax='false'>" +
+					"<h2>" + item.routineTitle + "</h2>" +
+				"</a>" +
+			"</li>" +
+            "<div class='ui-corner-all'>" +
+                "<div class='ui-body ui-body-a'>" +
+                    "<div class='ui-grid-a ui-responsive'>" +
+                        "<div class='ui-block-a'>" +
+                            "<h4>Description</h4>" +
+                            "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>" +
+                        "</div>" +
+                        "<div class='ui-block-b'><a href='#makenote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn ui-icon-note'>Make Note</a></div>" +
+                    "</div>" +
+                "</div>" +
+            "</div>").appendTo($("#routineList"));  
+            });
         },
         error: function () {
-            alert("failure");
+            alert("boo yah");
             //jQuery("#error").text("Username or password is incorrect");
         }
 }); 

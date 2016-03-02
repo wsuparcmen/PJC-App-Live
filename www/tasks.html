@@ -28,45 +28,38 @@
 		<h1>Job/Routine Name</h1>
 		
 		<div data-role="collapsibleset">
-		<div data-role="collapsible" data-collapsed="false">
-			<h4>Task #1</h4>
-			<div class="ui-grid-b ui-responsive">
-				<div class="ui-block-a">
-					<h4>Description........</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+			<div data-role="collapsible" data-collapsed="false">
+				<h4>Task #1</h4>
+				<div class="ui-grid-b ui-responsive">
+					<div class="ui-block-a">
+						<h4>Description........</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+					</div>
+					<div class="ui-block-b"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+					<div class="ui-block-c"><a href="#previousnotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
 				</div>
-				<div class="ui-block-b"><a href="#" class="ui-btn">Mark Finished</a></div>
-				<div class="ui-block-c"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+				
+				<a href="#" class="ui-btn">Mark Finished</a>
 			</div>
-			
-			<label for="previousnotes"><h4>Previous Notes</h4></label>
-			<select name="previousnotes" id="previousnotes">
-				<option value="one">One</option>
-				<option value="two">Two</option>
-				<option value="three">Three</option>
-			</select>
-		</div>
-		
-		<div data-role="collapsible">
-			<h4>Task #2</h4>
-			<div class="ui-grid-b ui-responsive">
-				<div class="ui-block-a">
-					<h4>Description........</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+			<div data-role="collapsible">
+				<h4>Task #2</h4>
+				<div class="ui-grid-b ui-responsive">
+					<div class="ui-block-a">
+						<h4>Description........</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+					</div>
+					
+					<div class="ui-block-b"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+					<div class="ui-block-c"><a href="#previousnotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
 				</div>
-				<div class="ui-block-b"><a href="#" class="ui-btn">Mark Finished</a></div>
-				<div class="ui-block-c"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
+				
+				<a href="#" class="ui-btn">Mark Finished</a>
 			</div>
-			
-			<label for="previousnotes"><h4>Previous Notes</h4></label>
-			<select name="previousnotes" id="previousnotes">
-				<option value="one">One</option>
-				<option value="two">Two</option>
-			</select>
-		</div>
 		</div>
 		
 		<div data-role="popup" id="makenote" data-theme="a" data-overlay-theme="b" class="ui-content">
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			
 			<form class="ui-body ui-body-a">
 				<label for="noteName">Name</label>
 				<input type="text" name="noteName" id="noteName" />
@@ -78,25 +71,48 @@
 				<textarea cols="40" rows="100" name="note" id="note"></textarea>
 				
 				<div class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
-					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
 				</div>
 			</form>
+		</div>
+		
+		<div data-role="popup" id="previousnotes" data-theme="none">
+			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			
+			<div data-role="collapsibleset">
+				<div data-role="collapsible" data-collapsed="false">
+					<h3>Note Name</h3>
+					<h4>Job Name, Task Name</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...
+					</p>
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
+						<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
+					</div>
+				</div>
+				<div data-role="collapsible">
+					<h3>Note Name</h3>
+					<h4>Job Name, Task Name</h4>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...
+					</p>
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
+						<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
 	<div data-role="footer" data-position="fixed">
 		<div data-role="navbar">
 			<ul>
-				<li>
-					<a href="splash.html" data-ajax="false" data-icon="home">Home</a>
-				</li>
-				<li>
-					<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
-				</li>
-				<li>
-					<a href="contact.html" data-ajax="false" data-icon="phone">Contact</a>
-				</li>
+				<li><a href="splash.html" data-ajax="false" data-icon="home">Home</a></li>
+				<li><a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a></li>
+				<li><a href="contact.html" data-ajax="false" data-icon="phone">Contact</a></li>
 			</ul>
 		</div>
 	</div>
