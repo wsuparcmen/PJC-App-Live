@@ -21,8 +21,8 @@ function submitLogin() {
                 //$('#data').html(window.localStorage.getItem("token"));
              },
              error: function () {
-                 alert("failure");
                   jQuery("#error").text("Username or password is incorrect");
+                  jQuery("#error").css("color", "red");
              }
         });
    });
