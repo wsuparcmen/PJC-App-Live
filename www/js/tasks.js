@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     
     
     
-});
+});z
 
 logout = function() {
     window.localStorage.removeItem("token");
