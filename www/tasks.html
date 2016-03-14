@@ -5,116 +5,85 @@
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
-    <script type="text/javascript" src="js/tasks.js"></script>
-
+	<link rel="stylesheet" href="js/jquery-ui.css" />
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/tasks.js"></script>
+	
 	<title>PARC Pocket Job Coach</title>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div data-role="header" data-position="fixed">
-		<a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
-		<h1>PARC Pocket Job Coach</h1>
-		
-		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
-		<div data-role="popup" id="menu">
-			<ul data-role="listview" data-inset="true">
-				<li><a href="#">My Account</a></li>
-				<li><a href="#">Log Out</a></li>
-			</ul>
-		</div>
+		<a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Exit</a>
+		<h1>Routine Name</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
-		<h1>Job/Routine Name</h1>
+		<p id="overallTime"><b>Overall Time -</b> 00:00:00</p>
+		<p><b id="progress">Overall Progress - 0/10</b><div id="progressbar"></div></p>
 		
-		<div data-role="collapsibleset">
-			<div data-role="collapsible" data-collapsed="false">
-				<h4>Task #1</h4>
-				<div class="ui-grid-b ui-responsive">
-					<div class="ui-block-a">
-						<h4>Description........</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
-					</div>
-					<div class="ui-block-b"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
-					<div class="ui-block-c"><a href="#previousnotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
-				</div>
-				
-				<a href="#" class="ui-btn">Mark Finished</a>
-			</div>
-			<div data-role="collapsible">
-				<h4>Task #2</h4>
-				<div class="ui-grid-b ui-responsive">
-					<div class="ui-block-a">
-						<h4>Description........</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
-					</div>
-					
-					<div class="ui-block-b"><a href="#makenote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-note">Make Note</a></div>
-					<div class="ui-block-c"><a href="#previousnotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
-				</div>
-				
-				<a href="#" class="ui-btn">Mark Finished</a>
-			</div>
+		<hr/>
+		
+		<h2 id="taskName">Task Name #1</h2>
+		<a href="#" class="ui-btn" onclick="finishTask()">Finish</a>
+		
+		<table style="width:100%">
+			<tr>
+				<td><b>Task Time</b></td>
+				<td id="taskTime">00:00:00</td>
+			</tr>
+			<tr>
+				<td><b>Estimated Time</b></td>
+				<td>1 minute</td>
+			</tr>
+		</table>
+		
+		<br/>
+		
+		<div class="ui-grid-a ui-responsive">
+			<div class="ui-block-a"><b>Description</b></div>
+			<div class="ui-block-b"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>
+			<div class="ui-block-a"></div>
+			
+			<div class="ui-block-a"><a href="#previousNotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
+			<div class="ui-block-b"><a href="#makeNote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Make Note</a></div>
 		</div>
 		
-		<div data-role="popup" id="makenote" data-theme="a" data-overlay-theme="b" class="ui-content">
+		<div data-role="popup" id="makeNote" data-theme="a" data-overlay-theme="b" class="ui-content">
 			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-			
+		
 			<form class="ui-body ui-body-a">
-				<label for="noteName">Name</label>
-				<input type="text" name="noteName" id="noteName" />
-				
-				<p>Job Name</p>
-				<p>Task Name</p>
+				<label for="noteSubject">Subject</label>
+				<input type="text" name="noteSubject" id="noteSubject" value="Routine Name, Task Name"/>
 				
 				<label for="note">Note</label>
-				<textarea cols="40" rows="100" name="note" id="note"></textarea>
+				<textarea name="note" id="note"></textarea>
 				
 				<div class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
-					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
+					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
 				</div>
 			</form>
 		</div>
 		
-		<div data-role="popup" id="previousnotes" data-theme="none">
+		<div data-role="popup" id="previousNotes" data-theme="none">
 			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 			
 			<div data-role="collapsibleset">
 				<div data-role="collapsible" data-collapsed="false">
 					<h3>Note Name</h3>
+					
 					<h4>Job Name, Task Name</h4>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...
-					</p>
-					<div class="ui-grid-a">
-						<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
-						<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
-					</div>
-				</div>
-				<div data-role="collapsible">
-					<h3>Note Name</h3>
-					<h4>Job Name, Task Name</h4>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...
-					</p>
+					
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
+					
 					<div class="ui-grid-a">
 						<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
 						<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	
-	<div data-role="footer" data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="splash.html" data-ajax="false" data-icon="home">Home</a></li>
-				<li><a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a></li>
-				<li><a href="contact.html" data-ajax="false" data-icon="phone">Contact</a></li>
-			</ul>
 		</div>
 	</div>
 </body>    

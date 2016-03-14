@@ -10,22 +10,20 @@ jQuery(document).ready(function() {
         $.each(routineList, function (key, item) {
             console.log(item);
             console.log(item.sequenceNo);
-            $("<li>" +
-				"<a href='tasks.html' data-ajax='false'>" +
-					"<h2>" + item.routineTitle + "</h2>" +
-				"</a>" +
-			"</li>" +
-            "<div class='ui-corner-all'>" +
-                "<div class='ui-body ui-body-a'>" +
-                    "<div class='ui-grid-a ui-responsive'>" +
-                        "<div class='ui-block-a'>" +
-                            "<h4>Description</h4>" +
-                            "<p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>" +
-                        "</div>" +
-                        "<div class='ui-block-b'><a href='#makenote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn ui-icon-note'>Make Note</a></div>" +
-                    "</div>" +
-                "</div>" +
-            "</div>").appendTo($("#routineList"));
+            $("<div data-role='collapsible'>" +
+				"<h3>" + item.routineTitle + "</h3>" +
+				"<a href='tasks.html' data-ajax='false' class='ui-btn'>Begin Routine</a>" +
+				"<div class='ui-grid-a ui-responsive'>" +
+					"<div class='ui-block-a'><h4>Description</h4></div>" +
+					"<div class='ui-block-b'><p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>" +
+					"<div class='ui-block-a'><b>Estimated Time</b></div>" +
+					"<div class='ui-block-b'><p>8 minutes</p></div>" +
+					"<div class='ui-block-a'><b>Number of Tasks</b></div>" +
+					"<div class='ui-block-b'><p>10</p></div>" +
+					"<div class='ui-block-a'><a href='#previousNotes' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
+					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
+				"</div>" +
+			"</div>").appendTo($("#routineList"));
         });
     }
 
