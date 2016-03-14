@@ -87,7 +87,16 @@ jQuery(document).ready(function () {
         }
     });*/
     
-    logout = function() {
+    /*logout = function() {
         window.localStorage.removeItem("token");
         window.location.href = "Login.html";
-    }
+
+    }*/
+
+
+logout = function() {
+       window.localStorage.removeItem("token");
+       window.location.href = "Login.html";
+   }
+
+
