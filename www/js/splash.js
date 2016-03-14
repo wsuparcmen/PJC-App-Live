@@ -93,11 +93,11 @@ jQuery(document).ready(function () {
         window.location.href = "Login.html";
 
     }*/
-	jQuery('#logout').on('click', function () {
-        window.localStorage.removeItem("token");
-        window.location.href = "Login.html";
-    });
 
-});
+
+logout = function() {
+       window.localStorage.removeItem("token");
+       window.location.href = "Login.html";
+   }
 
 
