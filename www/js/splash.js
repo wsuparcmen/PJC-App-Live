@@ -15,7 +15,6 @@ jQuery(document).ready(function () {
         
         
     function displayAllRoutinesFromStorage() {
-        alert("it worked");
         var routineList = JSON.parse(localStorage.getItem('routineList'));
         $.each(routineList, function (key, item) {
             $("<li>" +
