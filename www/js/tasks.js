@@ -2,7 +2,15 @@ jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     
-    
+var amountOfTasks = 0;
+var routineList = JSON.parse(localStorage.getItem('routineList'));
+var jobTitle = localStorage.getItem('jobName');
+$.each(routineList, function (key, item) {
+    if (item.routineTitle === jobTitle) {
+        amountOfTasks = item.Tasks.length;
+    } 
+});
+alert(amountOfTasks);    
     
 });
 

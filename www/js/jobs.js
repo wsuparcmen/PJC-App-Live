@@ -6,13 +6,10 @@ jQuery(document).ready(function() {
             
     function displayAllRoutinesFromStorage() {
         var routineList = JSON.parse(localStorage.getItem('routineList'));
-		alert(routineList);
         $.each(routineList, function (key, item) {
-            console.log(item);
-            console.log(item.sequenceNo);
             $("<div data-role='collapsible'>" +
 				"<h3>" + item.routineTitle + "</h3>" +
-				"<a href='tasks.html' data-ajax='false' class='ui-btn'>Begin Routine</a>" +
+				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button'>Begin Routine</a>" +
 				"<div class='ui-grid-a ui-responsive'>" +
 					"<div class='ui-block-a'><h4>Description</h4></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>" +
@@ -26,6 +23,13 @@ jQuery(document).ready(function() {
 			"</div>").appendTo($("#routineList"));
         });
     }
+    
+    jQuery('a.begin-button').on('click', function() {
+        var self = jQuery(this);
+        alert(self.prev().text());
+        localStorage.setItem("jobName", self.prev().text());
+        alert(localStorage.getItem("jobName"));
+    });
 
 /*$.ajax({
         type: 'GET',
