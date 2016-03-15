@@ -21,6 +21,8 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
 				"</div>" +
 			"</div>").appendTo($("#routineList"));
+			
+			$('#routineList').collapsibleset('refresh');
         });
     }
     
@@ -96,4 +98,7 @@ function formatItem(item) {
 logout = function() {
     window.localStorage.removeItem("token");
     window.location.href = "Login.html";
+}
+account = function() {
+    window.location.href = "account.html";
 }

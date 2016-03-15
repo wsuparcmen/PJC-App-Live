@@ -13,7 +13,9 @@ $.each(routineList, function (key, item) {
 alert(amountOfTasks);    
     
 });
-
+account = function() {
+    window.location.href = "account.html";
+}
 logout = function() {
     window.localStorage.removeItem("token");
     window.location.href = "Login.html";
