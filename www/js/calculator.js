@@ -8,12 +8,3 @@ function calculateWage() {
 													"You worked <b>" + h + "</b> hours at a pay rate of <b>$" + w + "</b> an hour. <br/>" +
 													"You earned a total of <b>$" + result + "</b>!";
 }
-
-logout = function() {
-    window.localStorage.removeItem("token");
-    window.location.href = "Login.html";
-}
-
-account = function() {
-    window.location.href = "account.html";
-}

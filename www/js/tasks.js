@@ -1,18 +1,33 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
+    var amountOfTasks = 0;
+    var taskNames = [];
+    var taskDescriptions = [];
+    var expectedDurations = [];
+    var routineList = JSON.parse(localStorage.getItem('routineList'));
+    var jobTitle = localStorage.getItem('jobName');
+    document.getElementById("routineName").innerHTML = jobTitle;
+    $.each(routineList, function (key, item) {
+        if (item.routineTitle === jobTitle) {
+            console.log(item);
+            amountOfTasks = item.Tasks.length;
+            for (var i = 0; i < amountOfTasks; i++) {
+                taskNames[i] = item.Tasks[i].taskName
+                taskDescriptions[i] = item.Tasks[i].taskDescription;
+                expectedDurations[i] = item.Tasks[i].expectedDuration;
+            }
+        } 
+    });
+    var completedTasks = 1;
+    var totalTasks = amountOfTasks;
+    document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
+    document.getElementById("taskName").innerHTML = taskNames[0];
+    alert(taskNames);
+    alert(expectedDurations);
     
-var amountOfTasks = 0;
-var routineList = JSON.parse(localStorage.getItem('routineList'));
-var jobTitle = localStorage.getItem('jobName');
-$.each(routineList, function (key, item) {
-    if (item.routineTitle === jobTitle) {
-        amountOfTasks = item.Tasks.length;
-    } 
-});
-alert(amountOfTasks);    
     
-});
+
 account = function() {
     window.location.href = "account.html";
 }
@@ -27,28 +42,30 @@ $(function(){
 	});
 });
 
-var completedTasks = 0;
-var totalTasks = 10;
-function finishTask(){
-	if(completedTasks < totalTasks){
+//function finishTask(){
+jQuery('#finishTask').on('click', function() {
+    if(completedTasks < totalTasks){
 		resetTaskTimer();
 	
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
-		progressbar.progressbar("value", total + 10);
+		progressbar.progressbar("value", total + (100 / amountOfTasks));
 		
 		completedTasks++;
 		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
-		document.getElementById("taskName").innerHTML = "Task Name #" + (completedTasks + 1);
+		document.getElementById("taskName").innerHTML = taskNames[completedTasks];
+        document.getElementById("description").innerHTML = '';
+        document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
 	}
 	if(completedTasks == totalTasks){
 		clearInterval(overallTimer);
 		clearInterval(partialTimer);
 		
 		document.getElementById("taskName").innerHTML = "Routine Completed!";
-	}
-}
+	} 
+});
+//}
 
 var overallTimer = setInterval(jobTimer, 1000);
 var seconds = 0;
@@ -96,3 +113,4 @@ function pad(number){
 	}
 	return number;
 }
+});

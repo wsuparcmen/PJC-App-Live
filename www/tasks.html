@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="js/jquery-ui.css" />
 	<script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/tasks.js"></script>
+    <script type="text/javascript" src="js/globalFunctions.js"></script>
 	
 	<title>PARC Pocket Job Coach</title>
     <meta charset="utf-8" />
@@ -16,7 +17,7 @@
 <body>
 	<div data-role="header" data-position="fixed">
 		<a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Exit</a>
-		<h1>Routine Name</h1>
+		<h1 id="routineName"></h1>
 		
 		<!--<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
 		<div data-role="popup" id="menu">
@@ -29,12 +30,12 @@
 
 	<div data-role="main" class="ui-content">
 		<p id="overallTime"><b>Overall Time -</b> 00:00:00</p>
-		<p><b id="progress">Overall Progress - 0/10</b><div id="progressbar"></div></p>
+		<p><b id="progress">Overall Progress - </b><div id="progressbar"></div></p>
 		
 		<hr/>
 		
-		<h2 id="taskName">Task Name #1</h2>
-		<a href="#" class="ui-btn" onclick="finishTask()">Finish</a>
+		<h2 id="taskName"></h2>
+		<a href="#" class="ui-btn" id="finishTask">Finish</a>
 		
 		<table style="width:100%">
 			<tr>
@@ -43,7 +44,7 @@
 			</tr>
 			<tr>
 				<td><b>Estimated Time</b></td>
-				<td>1 minute</td>
+				<td id="expectedDuration"></td>
 			</tr>
 		</table>
 		
@@ -51,7 +52,7 @@
 		
 		<div class="ui-grid-a ui-responsive">
 			<div class="ui-block-a"><b>Description</b></div>
-			<div class="ui-block-b"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>
+			<div class="ui-block-b" id="description"><p></p></div>
 			<div class="ui-block-a"></div>
 			
 			<div class="ui-block-a"><a href="#previousNotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>

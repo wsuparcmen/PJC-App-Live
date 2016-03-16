@@ -28,9 +28,9 @@ jQuery(document).ready(function() {
     
     jQuery('a.begin-button').on('click', function() {
         var self = jQuery(this);
-        alert(self.prev().text());
-        localStorage.setItem("jobName", self.prev().text());
-        alert(localStorage.getItem("jobName"));
+        var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
+        alert(tempJobName);
+        localStorage.setItem("jobName", tempJobName);
     });
 
 /*$.ajax({
@@ -93,12 +93,4 @@ jQuery(document).ready(function() {
 
 function formatItem(item) {
       return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
-}
-
-logout = function() {
-    window.localStorage.removeItem("token");
-    window.location.href = "Login.html";
-}
-account = function() {
-    window.location.href = "account.html";
 }
