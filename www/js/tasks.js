@@ -19,7 +19,7 @@ jQuery(document).ready(function() {
             }
         } 
     });
-    var completedTasks = 1;
+    var completedTasks = 0;
     var totalTasks = amountOfTasks;
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
     document.getElementById("taskName").innerHTML = taskNames[0];
