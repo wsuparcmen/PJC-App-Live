@@ -3,6 +3,7 @@ jQuery(document).ready(function () {
     var loginToken = window.localStorage.getItem("token");
     var oldToken = "b33c551a";
     var uri = 'http://pjcdbrebuild.gear.host/api/';
+
 	
     $.getJSON(uri + "Routine",
         {token: loginToken},
