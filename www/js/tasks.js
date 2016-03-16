@@ -23,8 +23,8 @@ jQuery(document).ready(function() {
     var totalTasks = amountOfTasks;
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
     document.getElementById("taskName").innerHTML = taskNames[0];
-    alert(taskNames);
-    alert(expectedDurations);
+   	document.getElementById("description").innerHTML = taskDescriptions[0];
+    document.getElementById("expectedDuration").innerHTML = expectedDurations[0];
     
     
 
@@ -55,8 +55,10 @@ jQuery('#finishTask').on('click', function() {
 		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
 		document.getElementById("taskName").innerHTML = taskNames[completedTasks];
-        document.getElementById("description").innerHTML = '';
+        document.getElementById("description").innerHTML = taskDescriptions[completedTasks];
         document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
+
+      
 	}
 	if(completedTasks == totalTasks){
 		clearInterval(overallTimer);
