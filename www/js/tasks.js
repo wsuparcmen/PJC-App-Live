@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
+    keepAlive(loginToken);
     var amountOfTasks = 0;
     var taskNames = [];
     var taskDescriptions = [];
