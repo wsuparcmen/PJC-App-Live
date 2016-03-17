@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
+   resetTaskTimer();
     var amountOfTasks = 0;
     var taskNames = [];
     var taskDescriptions = [];
@@ -25,16 +26,7 @@ jQuery(document).ready(function() {
     document.getElementById("taskName").innerHTML = taskNames[0];
    	document.getElementById("description").innerHTML = taskDescriptions[0];
     document.getElementById("expectedDuration").innerHTML = expectedDurations[0];
-    
-    
 
-account = function() {
-    window.location.href = "account.html";
-}
-logout = function() {
-    window.localStorage.removeItem("token");
-    window.location.href = "Login.html";
-}
 
 $(function(){
 	$( "#progressbar" ).progressbar({
@@ -46,7 +38,7 @@ $(function(){
 jQuery('#finishTask').on('click', function() {
     if(completedTasks < totalTasks){
 		resetTaskTimer();
-	
+		 keepAlive(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / amountOfTasks));

@@ -1,12 +1,13 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
-    
+      
 
     displayAllRoutinesFromStorage();
             
     function displayAllRoutinesFromStorage() {
         var routineList = JSON.parse(localStorage.getItem('routineList'));
+
         $.each(routineList, function (key, item) {
             console.log(item);
             $("<div data-role='collapsible'>" +
@@ -26,6 +27,7 @@ jQuery(document).ready(function() {
 			
 			$('#routineList').collapsibleset('refresh');
         });
+
     }
     
     jQuery('a.begin-button').on('click', function(e) {
