@@ -21,7 +21,7 @@ jQuery(document).ready(function() {
             }
         ).error(function() {
             //error goes here
-            alert("failed to keep alive");
+            console.log("failed to keep alive");
         });
         console.log("keep alive is set");
         

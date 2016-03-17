@@ -1,12 +1,13 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
-    
+      
 
     displayAllRoutinesFromStorage();
             
     function displayAllRoutinesFromStorage() {
         var routineList = JSON.parse(localStorage.getItem('routineList'));
+
         $.each(routineList, function (key, item) {
             console.log(item);
             $("<div data-role='collapsible'>" +
@@ -26,6 +27,7 @@ jQuery(document).ready(function() {
 			
 			$('#routineList').collapsibleset('refresh');
         });
+
     }
     
     jQuery('a.begin-button').on('click', function() {
@@ -33,6 +35,8 @@ jQuery(document).ready(function() {
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
+       
+         
     });
     
     function checkNullTime(duration) {
@@ -44,7 +48,7 @@ jQuery(document).ready(function() {
     }
     
 });
-keepAlive(loginToken);
+//keepAlive(loginToken);
 function formatItem(item) {
       return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
 }
