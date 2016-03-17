@@ -8,30 +8,22 @@ jQuery(document).ready(function() {
     account = function() {
         window.location.href = "account.html";
     }
-    window.keepAlive = function(tempToken) {
-        //alert("it worked");
+    window.keepAliveTwo = function(tempToken) {
         
-        var uri = 'http://pjcdbrebuild.gear.host/api/Login';
-        var token = tempToken;
-        $.getJSON(uri,
-            {token: token},
+        var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
+        var theToken = tempToken;
+        
+        $.getJSON(keepAliveUri,
+            {token: theToken},
             function (data) {
                 // On success, the token is valid, has not expired, and has been renewed.
                 console.log("kept alive");
+                
             }
-        ).error(function() {
+        ).error(function(data) {
             //error goes here
-            alert("failed to keep alive");
+            console.log("failed to keep alive");
+            logout();
         });
-        console.log("keep alive is set");
-        
-        /*$.getJSON("example.json", function() {
-            alert("success");
-        })
-        .success(function() { alert("second success"); })
-        .error(function() { alert("error"); })
-        .complete(function() { alert("complete"); });*/
-        
-        
     } 
 });

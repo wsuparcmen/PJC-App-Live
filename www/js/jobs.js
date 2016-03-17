@@ -28,11 +28,13 @@ jQuery(document).ready(function() {
         });
     }
     
-    jQuery('a.begin-button').on('click', function() {
-        keepAlive(loginToken);
+    jQuery('a.begin-button').on('click', function(e) {
+        e.preventDefault();
+        keepAliveTwo(loginToken);
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
+        window.location.href = "tasks.html";
     });
     
     function checkNullTime(duration) {
@@ -43,8 +45,26 @@ jQuery(document).ready(function() {
         }
     }
     
+    setTimeout(function() {
+        keepAliveTwo(loginToken);    
+    }, 500);
+    
+    function keepAlive(tempToken) {
+        var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
+        var token = tempToken;
+        $.getJSON(keepAliveUri,
+            {token: token},
+            function (data) {
+                // On success, the token is valid, has not expired, and has been renewed.
+                console.log("kept alive");
+            }
+        ).error(function() {
+            //error goes here
+            alert("failed to keep alive");
+        });
+    }
 });
-keepAlive(loginToken);
+
 function formatItem(item) {
       return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
 }

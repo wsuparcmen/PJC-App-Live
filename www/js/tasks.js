@@ -1,7 +1,6 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
-    keepAlive(loginToken);
     var amountOfTasks = 0;
     var taskNames = [];
     var taskDescriptions = [];
@@ -73,7 +72,8 @@ jQuery('#finishTask').on('click', function() {
 		document.getElementById("taskName").innerHTML = "Routine Completed!";
         document.getElementById("description").innerHTML = "Routine Completed!";
         document.getElementById("expectedDuration").innerHTML = "Routine Completed!";
-	} 
+	}
+    keepAliveTwo(loginToken); 
 });
 //}
 
@@ -123,4 +123,8 @@ function pad(number){
 	}
 	return number;
 }
+
+setTimeout(function() {
+    keepAliveTwo(loginToken);    
+}, 500);
 });
