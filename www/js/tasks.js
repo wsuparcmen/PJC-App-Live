@@ -65,6 +65,8 @@ jQuery('#finishTask').on('click', function() {
 		clearInterval(partialTimer);
 		
 		document.getElementById("taskName").innerHTML = "Routine Completed!";
+        document.getElementById("description").innerHTML = "Routine Completed!";
+        document.getElementById("expectedDuration").innerHTML = "Routine Completed!";
 	} 
 });
 //}

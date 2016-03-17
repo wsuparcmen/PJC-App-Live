@@ -1,17 +1,21 @@
 jQuery(document).ready(function () {
+    console.log(localStorage.getItem('routineList'));
+    localStorage.removeItem('routineList');
     
+    console.log(localStorage.getItem('routineList'));
     var loginToken = window.localStorage.getItem("token");
-    var oldToken = "b33c551a";
     var uri = 'http://pjcdbrebuild.gear.host/api/';
 	
     $.getJSON(uri + "Routine",
         {token: loginToken},
         function (data) {
             localStorage.setItem('routineList', JSON.stringify(data));
+            console.log(localStorage.getItem('routineList'));
         }
     );
+    console.log(localStorage.getItem('routineList'));
 
-    displayAllRoutinesFromStorage();
+    /*displayAllRoutinesFromStorage();
         
         
     function displayAllRoutinesFromStorage() {
@@ -34,7 +38,7 @@ jQuery(document).ready(function () {
                 "</div>" +
             "</div>").appendTo($("#routineList"));
         });
-    }
+    }*/
     
     /*$.ajax({
         type: 'GET',
