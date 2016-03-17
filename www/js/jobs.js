@@ -6,6 +6,7 @@ jQuery(document).ready(function() {
 	  
         keepAliveTwo(loginToken);    
     }, 500);
+	
     displayAllRoutinesFromStorage();
             
     function displayAllRoutinesFromStorage() {

@@ -38,10 +38,11 @@ $(function(){
 jQuery('#finishTask').on('click', function() {
     if(completedTasks < totalTasks){
 		resetTaskTimer();
-		 keepAlive(loginToken);
+		 keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / amountOfTasks));
+		
 		
 		completedTasks++;
 		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
@@ -54,6 +55,12 @@ jQuery('#finishTask').on('click', function() {
         else{
         	document.getElementById("expectedDuration").innerHTML = "";
         }
+		if(completedTasks == totalTasks){
+			document.getElementById("finishTask").style.background='orange';
+			document.getElementById("finishTask").innerHTML = "Completed";
+			
+		}
+	
 
       
 	}
