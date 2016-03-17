@@ -56,7 +56,12 @@ jQuery('#finishTask').on('click', function() {
 		
 		document.getElementById("taskName").innerHTML = taskNames[completedTasks];
         document.getElementById("description").innerHTML = taskDescriptions[completedTasks];
-        document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
+        if(expectedDurations[completedTasks] != null){
+        	document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
+        }
+        else{
+        	document.getElementById("expectedDuration").innerHTML = "";
+        }
 
       
 	}
