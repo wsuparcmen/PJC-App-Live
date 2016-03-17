@@ -2,7 +2,9 @@ jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
       
-
+	   setTimeout(function() {
+        keepAliveTwo(loginToken);    
+    }, 500);
     displayAllRoutinesFromStorage();
             
     function displayAllRoutinesFromStorage() {
@@ -32,7 +34,7 @@ jQuery(document).ready(function() {
     
     jQuery('a.begin-button').on('click', function(e) {
         e.preventDefault();
-        keepAliveTwo(loginToken);
+        //keepAliveTwo(loginToken);
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
@@ -47,11 +49,16 @@ jQuery(document).ready(function() {
         }
     }
     
-    setTimeout(function() {
-        keepAliveTwo(loginToken);    
-    }, 500);
+ 
     
-    function keepAlive(tempToken) {
+    
+});
+
+function formatItem(item) {
+      return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
+}
+
+function keepAlive(tempToken) {
         var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
         var token = tempToken;
         $.getJSON(keepAliveUri,
@@ -65,8 +72,3 @@ jQuery(document).ready(function() {
             alert("failed to keep alive");
         });
     }
-});
-
-function formatItem(item) {
-      return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
-}
