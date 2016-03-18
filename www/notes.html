@@ -38,24 +38,27 @@
 				
 				<div class="ui-grid-a">
 					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
-					<div class="ui-block-b"><a href="#" class="ui-btn" id="cancel">Cancel</a></div>
+					<div class="ui-block-b"><a href="#" class="ui-btn" id="clear">Clear</a></div>
 				</div>
 			</form>
 			
 			<h2>Previous Notes</h2>
 			<form class="ui-filterable"><input id="searchNotes" data-type="search" /></form>
-			<ul id="previousNotes" data-role="listview" data-icon="false" data-split-icon="delete" data-filter="true" data-input="#searchNotes">
-			</ul>
+			
+			<div id="previousNotes" data-role="collapsibleset" data-icon="false" data-split-icon="delete" data-filter="true" data-input="#searchNotes">
+			</div>
+			
 			<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
-				<p id="question">Are you sure you want to delete:</p>
+				<p id="question">Are you sure you want to delete the note:</p>
 				<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
-					</div>
-					<div class="ui-block-b">
-						<a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
-					</div>
+					<div class="ui-block-a"><a id="yes" class="ui-btn" data-rel="back">Yes</a></div>
+					<div class="ui-block-b"><a id="cancel" class="ui-btn" data-rel="back">Cancel</a></div>
 				</div>
+			</div>
+			
+			<div id="emptyNote" class="ui-content" data-role="popup" data-theme="a">
+				<p id="question">Your note is blank and was not saved.</p>
+				<a id="okay" class="ui-btn" data-rel="back">Okay</a>
 			</div>
 		</div>
 		
