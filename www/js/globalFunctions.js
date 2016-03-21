@@ -1,11 +1,11 @@
 jQuery(document).ready(function() {
-    logout = function() {
+    window.logout = function() {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("jobName");
         window.localStorage.removeItem("routineList");
         window.location.href = "Login.html";
     }
-    account = function() {
+    window.account = function() {
         window.location.href = "account.html";
     }
     window.keepAliveTwo = function(tempToken,url) {
