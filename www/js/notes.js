@@ -26,10 +26,7 @@ $(document).on("pagecreate", function(){
 		else{
 			$("#previousNotes").append("<div data-role='collapsible'>" +
 											"<h3><span class='title'>" + name + "</span></h3>" +
-											"<div class='content'>" +
-												"<strong class='name'>" + name + "</strong>" + 
-												"<p class='body'>" + note + "</p>" +
-											"</div>" +
+											"<p class='body'>" + note + "</p>" +
 											"<div class='ui-grid-a'>" +
 												"<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
 												"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>" +
@@ -76,25 +73,20 @@ function confirmAndDelete(item){
 }
 
 function edit(item){
-	var name = item.find(".name")[0].innerText;
-	var note = item.find(".body")[0].innerText;
+	$("#editNote #editName")[0].value = item.find(".title")[0].innerText;
+	$("#editNote #editBody")[0].value = item.find(".body")[0].innerText;
+	$("#editNote").popup("open");
 	
-	item.find(".content")[0].innerHTML = "<form class='ui-body ui-body-a'>" +
-											"<label for='noteName'>Name</label>" +
-											"<input type='text' name='noteName' id='editName' value='" + name + "'/>" +
-											"<label for='note'>Note</label>" +
-											"<textarea cols='40' name='note' id='editBody'>" + note + "</textarea>" +
-											"<a href='#' class='ui-btn' id='saveEdit'>Save</a>" +
-										"</form>";
-	
-	$("#saveEdit").click(function(){
-		name = document.getElementById("editName").value;
-		note = document.getElementById("editBody").value;
+	$("#editNote #saveEdit").click(function(){
+		item.find(".title")[0].innerText = document.getElementById("editName").value;
+		item.find(".body")[0].innerText = document.getElementById("editBody").value;
 		
-		item.find(".content")[0].innerHTML = "<strong class='name'>" + name + "</strong>" + 
-											"<p class='body'>" + note + "</p>";
-		item.find(".title")[0].innerText = name;
+		$("#editNote #saveEdit").off();
 		
 		//save edited note
+	});
+	
+	$("#editNote #cancelEdit").on("click", function(){
+		$("#editNote #saveEdit").off();
 	});
 }
