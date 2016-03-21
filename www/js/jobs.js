@@ -36,10 +36,6 @@ jQuery(document).ready(function() {
 	
     jQuery('a.begin-button').on('click', function(e) {
         e.preventDefault();
-<<<<<<< HEAD
-=======
-        keepAliveTwo(loginToken);
->>>>>>> a383b435df2e60354c8838967215bdecc0f19a65
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
