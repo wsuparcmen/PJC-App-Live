@@ -35,7 +35,7 @@ jQuery(document).ready(function() {
     
     jQuery('a.begin-button').on('click', function(e) {
         e.preventDefault();
-        //keepAliveTwo(loginToken);
+        keepAliveTwo(loginToken);
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
@@ -49,8 +49,6 @@ jQuery(document).ready(function() {
             return duration;
         }
     }
-    
- 
     
     
 });
