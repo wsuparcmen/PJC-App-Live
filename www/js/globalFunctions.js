@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
     account = function() {
         window.location.href = "account.html";
     }
-    window.keepAliveTwo = function(tempToken) {
+    window.keepAliveTwo = function(tempToken,url) {
         
         var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
         var theToken = tempToken;
@@ -17,12 +17,13 @@ jQuery(document).ready(function() {
             {token: theToken},
             function (data) {
                 // On success, the token is valid, has not expired, and has been renewed.
-                console.log("kept alive");
+				if(url!= null){
+					window.location.href = url;
+				}
                 
             }
         ).error(function(data) {
             //error goes here
-            console.log("failed to keep alive");
             logout();
         });
     } 

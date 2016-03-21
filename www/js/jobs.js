@@ -3,7 +3,6 @@ jQuery(document).ready(function() {
     var loginToken = window.localStorage.getItem("token");
       
 	   setTimeout(function() {
-	  
         keepAliveTwo(loginToken);    
     }, 500);
 	
@@ -33,14 +32,14 @@ jQuery(document).ready(function() {
         });
 
     }
-    
+
+	
     jQuery('a.begin-button').on('click', function(e) {
         e.preventDefault();
-        //keepAliveTwo(loginToken);
         var self = jQuery(this);
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
-        window.location.href = "tasks.html";
+        keepAliveTwo(loginToken, "tasks.html");
     });
     
     function checkNullTime(duration) {
@@ -60,17 +59,3 @@ function formatItem(item) {
       return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
 }
 
-function keepAlive(tempToken) {
-        var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
-        var token = tempToken;
-        $.getJSON(keepAliveUri,
-            {token: token},
-            function (data) {
-                // On success, the token is valid, has not expired, and has been renewed.
-                console.log("kept alive");
-            }
-        ).error(function() {
-            //error goes here
-            alert("failed to keep alive");
-        });
-    }
