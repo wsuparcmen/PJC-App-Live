@@ -49,6 +49,8 @@
 			</div>
 			
 			<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				
 				<p id="question">Are you sure you want to delete the note:</p>
 				<div class="ui-grid-a">
 					<div class="ui-block-a"><a id="yes" class="ui-btn" data-rel="back">Yes</a></div>
@@ -57,8 +59,26 @@
 			</div>
 			
 			<div id="emptyNote" class="ui-content" data-role="popup" data-theme="a">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				
 				<p id="question">Your note is blank and was not saved.</p>
 				<a id="okay" class="ui-btn" data-rel="back">Okay</a>
+			</div>
+			
+			<div id="editNote" class="ui-content" data-role="popup" data-theme="a">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			
+				<form class='ui-body ui-body-a'>
+					<label for='noteName'>Name</label>
+					<input type='text' name='noteName' id='editName' value="test"/>
+					<label for='note'>Note</label>
+					<textarea cols='40' name='note' id='editBody'></textarea>
+					
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><a id="saveEdit" class="ui-btn" data-rel="back">Save</a></div>
+						<div class="ui-block-b"><a id="cancelEdit" class="ui-btn" data-rel="back">Cancel</a></div>
+					</div>
+				</form>
 			</div>
 		</div>
 		
