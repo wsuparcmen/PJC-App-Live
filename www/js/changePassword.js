@@ -3,7 +3,11 @@ jQuery(document).ready(function() {
     var token = window.localStorage.getItem("token");
     var oldPassword = jQuery('input#old').val();
     var newPassword = jQuery('input#new').val();
-    //var confirmPassword = jQuery('input#confirm').val();
+    var confirmPassword = jQuery('input#confirm').val();
+    jQuery('.change-password-save').on('click', 'a', function() {
+        console.log("boo");
+        InvalidOldPassword(); 
+    });
 });
 
 function ValidLogin(){
@@ -27,10 +31,11 @@ function ValidLogin(){
 }
 
 function InvalidOldPassword(){
+    console.log("in function");
     var model = {
-    'OldPassword':'testpassword1',
-    'NewPassword':'password',
-    'ConfirmPassword':'password'};
+    'OldPassword':oldPassword,
+    'NewPassword':newPassword,
+    'ConfirmPassword':confirmPassword};
     $.ajax({
     type: 'POST',
     dataType: 'json',
@@ -39,9 +44,11 @@ function InvalidOldPassword(){
     success: function(data){
         //$('#IOldPF').html('Failure: Invalid Old Password Accepted');
         //$('#IOldPF').css('color','red');
+        alert("success");
         
     },
     error: function(jqXHR, exception){
+        jQuery('#changeError').html(jqXHR.status + ' - ' + jqXHR.responseText);
         //$('#IOldResult').html('' + jqXHR.status + ' - ' + jqXHR.responseText);
         //$('#IOldPF').html('Success!');
         //InvalidShortPassword();
