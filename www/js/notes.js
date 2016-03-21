@@ -27,7 +27,7 @@ $(document).on("pagecreate", function(){
 			$("#previousNotes").append("<div data-role='collapsible'>" +
 											"<h3><span class='title'>" + name + "</span></h3>" +
 											"<p class='body'>" + note + "</p>" +
-											"<div class='ui-grid-a'>" +
+											"<div class='ui-grid-a ui-responsive'>" +
 												"<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
 												"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>" +
 											"</div>" +
