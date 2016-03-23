@@ -11,16 +11,16 @@ account = function() {
 }
 
 $(document).on("pagecreate", function(){
-	var count = 0;
 	$("#save").click(function(){
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
 		
-		if(name == "" && note != ""){
-			count++;
-			name = "Untitled Note " + count;
+		if(name == ""){
+			$("#emptyNote #message")[0].innerText = "Please name your note before saving.";
+			$("#emptyNote").popup("open");
 		}
-		if(note == ""){
+		else if(note == ""){
+			$("#emptyNote #message")[0].innerHTML = "Your note is blank and was not saved.";
 			$("#emptyNote").popup("open");
 		}
 		else{
@@ -62,7 +62,6 @@ function confirmAndDelete(item){
 	
 	$("#confirm #yes").on("click", function(){
 		item.remove();
-		$("#previousNotes").collapsibleset("refresh");
 		
 		//delete note
 	});
