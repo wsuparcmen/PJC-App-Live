@@ -38,7 +38,7 @@ $(function(){
 jQuery('#finishTask').on('click', function() {
     if(completedTasks < totalTasks){
 		resetTaskTimer();
-		 keepAliveTwo(loginToken);
+		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / amountOfTasks));
@@ -58,8 +58,12 @@ jQuery('#finishTask').on('click', function() {
 		if(completedTasks == totalTasks){
 			document.getElementById("finishTask").style.background='orange';
 			document.getElementById("finishTask").innerHTML = "Completed";
-			
 		}
+        //this is where the ajax call will go to send the completed job off
+        
+        //------------------
+        
+        
 	
 
       

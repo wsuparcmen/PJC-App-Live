@@ -50,7 +50,6 @@ jQuery(document).ready(function() {
         }
     }
     
-    
 });
 
 function formatItem(item) {

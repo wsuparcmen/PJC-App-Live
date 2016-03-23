@@ -16,7 +16,14 @@ jQuery(document).ready(function() {
                 window.location.href = "splash.html";
             },
             error: function(jqXHR, exception){
-                jQuery('#changeError').html(jqXHR.status + ' - ' + jqXHR.responseText);
+                console.log(jqXHR.status + ' - ' + jqXHR.responseText);
+                if (model.NewPassword !== model.ConfirmPassword) {
+                    jQuery('#changeError').html("'New Password' does not match 'Confirm Password'")
+                } else if (model.NewPassword.length < 8) {
+                    jQuery('#changeError').html("Your new password is not long enough");
+                } else {
+                    jQuery('#changeError').html("There was an error, check your old password and try again");
+                }
             }
         });
     });
