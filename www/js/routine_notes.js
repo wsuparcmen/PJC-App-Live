@@ -20,25 +20,27 @@ $(document).on("pagecreate", function(){
 		}
 		
 		if(name != "" && note !=""){
-			$("#notesSet").append("<div data-role='collapsible'>" +
+			$("#previousNotes").append("<div data-role='collapsible'>" +
 										"<h3><span class='title'>" + name + "</span></h3>" +
 										"<p class='body'>" + note + "</p>" +
-										"<div class='ui-grid-a ui-responsive'>" +
+										"<p class='confirmDelete'></p>" +
+										"<p class='editNote'></p>" +
+										"<div class='ui-grid-a ui-responsive noteControls'>" +
 											"<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
 											"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>" +
 										"</div>" +
 									"</div>");
-			$("#notesSet").collapsibleset("refresh");
+			$("#previousNotes").collapsibleset("refresh");
 			document.getElementById("noteForm").reset();
-			
-			$(".delete").on("click", function(){
-				var item = $(this).parent("div").parent("div").parent("div").parent("div");
-				confirmAndDelete(item);
-			});
 			
 			$(".edit").on("click", function(){
 				var item = $(this).parent("div").parent("div").parent("div").parent("div");
 				edit(item);
+			});
+			
+			$(".delete").on("click", function(){
+				var item = $(this).parent("div").parent("div").parent("div").parent("div");
+				confirmAndDelete(item);
 			});
 			
 			$("#makeNote").popup("close");
@@ -55,9 +57,65 @@ $(document).on("pagecreate", function(){
 });
 
 function confirmAndDelete(item){
+	var list = document.getElementById("popupContent").innerHTML;
 	
+	item.find(".confirmDelete")[0].style.color = "red";
+	item.find(".confirmDelete")[0].innerText = "Are you sure you want to delete this note?";
+	
+	item.find(".noteControls")[0].innerHTML = "<div class='ui-block-a'><a href='#' class='ui-btn yes'>Yes</a></div>" +
+												"<div class='ui-block-b'><a href='#' class='ui-btn cancel'>Cancel</a></div>";
+				
+	$(".yes").on("click", function(){
+		item.remove();
+		
+		//delete note
+	});
+	
+	$(".cancel").on("click", function(){
+		$("#confirm #yes").off();
+		
+		item.find(".confirmDelete")[0].innerText = "";
+		item.find(".noteControls")[0].innerHTML = "<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
+													"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>";
+		
+		$(".edit").on("click", function(){
+				var item = $(this).parent("div").parent("div").parent("div").parent("div");
+				edit(item);
+			});
+			
+		$(".delete").on("click", function(){
+			var item = $(this).parent("div").parent("div").parent("div").parent("div");
+			confirmAndDelete(item);
+		});
+	});
 }
 
 function edit(item){
+	item.find(".editNote")[0].innerHTML = "<form>" +
+											"<label for='noteName'>Name</label>" +
+											"<input type='text' name='noteName' class='editName' value='" + item.find(".title")[0].innerText + "'/>" +
+											"<label for='note'>Note</label>" +
+											"<textarea name='note' class='editBody'>" + item.find(".body")[0].innerText + "</textarea>" +
+											"<div class='ui-grid-a ui-responsive'>" +
+												"<div class='ui-block-a'><a class='ui-btn saveEdit'>Save</a></div>" +
+												"<div class='ui-block-b'><a class='ui-btn cancelEdit'>Cancel</a></div>" +
+											"</div>" +
+										"</form>";
 	
+	$(".saveEdit").on("click", function(){
+		item.find(".title")[0].innerText = $(".editNote .editName")[0].value;
+		item.find(".body")[0].innerText = $(".editNote .editBody")[0].value;;
+		
+		$(".saveEdit").off();
+		
+		item.find(".editNote")[0].innerHTML = "";
+		
+		//delete note
+	});
+	
+	$(".cancelEdit").on("click", function(){
+		$(".saveEdit").off();
+		
+		item.find(".editNote")[0].innerHTML = "";
+	});
 }

@@ -48,7 +48,7 @@
 			<div class="ui-block-b" id="description"><p></p></div>
 			<div class="ui-block-a"></div>
 			
-			<div class="ui-block-a"><a href="#previousNotes" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
+			<div class="ui-block-a"><a href="#notesList" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Previous Notes</a></div>
 			<div class="ui-block-b"><a href="#makeNote" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn">Make Note</a></div>
 		</div>
 		
@@ -69,10 +69,12 @@
 			</form>
 		</div>
 		
-		<div data-role="popup" id="previousNotes" data-theme="none">
+		<div data-role="popup" id="notesList" data-theme="none">
 			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 			
-			<div id="notesSet" data-role="collapsibleset"></div>
+			<div id="popupContent">
+				<div id="previousNotes" data-role="collapsibleset"></div>
+			</div>
 		</div>
 	</div>
 </body>    
