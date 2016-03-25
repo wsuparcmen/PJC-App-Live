@@ -1,5 +1,11 @@
 $(document).on("pagecreate", function(){
+	if(document.getElementById("previousNotes").innerHTML == ""){
+		document.getElementById("emptyNotesList").innerText = "There are no previous notes for this task.";
+	}
+	
 	$("#save").click(function(){
+		document.getElementById("emptyNotesList").innerText = "";
+		
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
 		
@@ -21,15 +27,15 @@ $(document).on("pagecreate", function(){
 		
 		if(name != "" && note !=""){
 			$("#previousNotes").append("<div data-role='collapsible'>" +
-										"<h3><span class='title'>" + name + "</span></h3>" +
-										"<p class='body'>" + note + "</p>" +
-										"<p class='confirmDelete'></p>" +
-										"<p class='editNote'></p>" +
-										"<div class='ui-grid-a ui-responsive noteControls'>" +
-											"<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
-											"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>" +
-										"</div>" +
-									"</div>");
+											"<h3><span class='title'>" + name + "</span></h3>" +
+											"<p class='body'>" + note + "</p>" +
+											"<p class='confirmDelete'></p>" +
+											"<p class='editNote'></p>" +
+											"<div class='ui-grid-a ui-responsive noteControls'>" +
+												"<div class='ui-block-a'><a href='#' class='ui-btn edit'>Edit</a></div>" +
+												"<div class='ui-block-b'><a href='#' class='ui-btn delete'>Delete</a></div>" +
+											"</div>" +
+										"</div>");
 			$("#previousNotes").collapsibleset("refresh");
 			document.getElementById("noteForm").reset();
 			
@@ -67,6 +73,10 @@ function confirmAndDelete(item){
 				
 	$(".yes").on("click", function(){
 		item.remove();
+		
+		if(document.getElementById("previousNotes").innerHTML == ""){
+			document.getElementById("emptyNotesList").innerText = "There are no previous notes for this task.";
+		}
 		
 		//delete note
 	});
