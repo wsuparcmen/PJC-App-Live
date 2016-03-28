@@ -22,6 +22,9 @@ jQuery(document).ready(function() {
     });
     var completedTasks = 0;
     var totalTasks = amountOfTasks;
+    for (var i = 0; i < amountOfTasks; i++) {
+        //html generated here
+    }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
     document.getElementById("taskName").innerHTML = taskNames[0];
    	document.getElementById("description").innerHTML = taskDescriptions[0];
