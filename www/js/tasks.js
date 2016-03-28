@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://localhost:43393/api/';
     var loginToken = window.localStorage.getItem("token");
    resetTaskTimer();
     var amountOfTasks = 0;
