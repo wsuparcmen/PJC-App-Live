@@ -1,7 +1,7 @@
 //window.addEventListener('load', loadHandler);
 function submitLogin() {
    jQuery(document).ready(function() {
-	   var uri = 'http://localhost:43393/api/Login';
+	   var uri = 'http://pjcdbrebuild.gear.host/api/Login';
 	   var day = new Date();
 	   var now = day.getTime();
        var login = {

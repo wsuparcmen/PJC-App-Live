@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://localhost:43393/api/Login';
+    var uri = 'http://pjcdbrebuild.gear.host/api/Login';
     var token = window.localStorage.getItem("token");
     var model = {};
     jQuery('.change-password-save').on('click', 'a', function() {

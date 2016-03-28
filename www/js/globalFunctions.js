@@ -10,7 +10,7 @@ jQuery(document).ready(function() {
     }
     window.keepAliveTwo = function(tempToken,url) {
         
-        var keepAliveUri = 'http://localhost:43393/api/Login';
+        var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
         var theToken = tempToken;
         
         $.getJSON(keepAliveUri,

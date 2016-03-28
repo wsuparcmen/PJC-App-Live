@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://localhost:43393/api/';
+    var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
       
 	   setTimeout(function() {
