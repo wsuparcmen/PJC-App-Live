@@ -1,7 +1,6 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
-   resetTaskTimer();
     var amountOfTasks = 0;
     var taskNames = [];
     var taskDescriptions = [];
@@ -23,13 +22,41 @@ jQuery(document).ready(function() {
     var completedTasks = 0;
     var totalTasks = amountOfTasks;
     for (var i = 0; i < amountOfTasks; i++) {
-        //html generated here
+         $("<div data-role='collapsible' class='individualTask'>" +
+				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
+				"<a href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</a>" +
+                "<table style='width:100%'>" +
+                    "<tr>" +
+						"<td><b>Task Time</b></td>" +
+						"<td id='taskTime'>00:00:00</td>" +
+					"</tr>" +
+					"<tr>" +
+						"<td><b>Estimated Time</b></td>" +
+						"<td id='expectedDuration'>" + expectedDurations[i] + "</td>" +
+					"</tr>" +
+				"</table>" + 
+                "<br/>" +
+				"<div class='ui-grid-a ui-responsive'>" +
+					"<div class='ui-block-a'><b>Description</b></div>" +
+					"<div class='ui-block-b' id='description'><p>" + taskDescriptions[i] + "</p></div>" +
+					"<div class='ui-block-a'></div>" +
+					"<div class='ui-block-a'><a href='#previousNotes' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
+					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
+				"</div>" +
+			"</div>").appendTo($("#tasksList"));
+            
+            $('.finishTask').css('border-color', 'orange');
+            
+            if (i == 0) {
+                $('.individualTask').attr('data-collapsed', 'false');
+            } else {
+                
+            }
+            $('#tasksList').collapsibleset('refresh');
     }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
-    document.getElementById("taskName").innerHTML = taskNames[0];
-   	document.getElementById("description").innerHTML = taskDescriptions[0];
-    document.getElementById("expectedDuration").innerHTML = expectedDurations[0];
-
+    
+    //resetTaskTimer();
 
 $(function(){
 	$( "#progressbar" ).progressbar({
@@ -38,20 +65,16 @@ $(function(){
 });
 
 //function finishTask(){
-jQuery('#finishTask').on('click', function() {
+jQuery('.finishTask').on('click', function() {
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / amountOfTasks));
-		
-		
 		completedTasks++;
 		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
-		document.getElementById("taskName").innerHTML = taskNames[completedTasks];
-        document.getElementById("description").innerHTML = taskDescriptions[completedTasks];
         if(expectedDurations[completedTasks] != null){
         	document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
         }
@@ -114,13 +137,13 @@ function taskTimer(){
 		tHours++;
 		tMinutes = 0;
 	}
-    document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+    //document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
 }
 function resetTaskTimer(){
 	tSeconds = 0;
 	tMinutes = 0;
 	tHours = 0;
-    document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+    //document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
 }
 
 function pad(number){
