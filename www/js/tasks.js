@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
     for (var i = 0; i < amountOfTasks; i++) {
          $("<div data-role='collapsible' class='individualTask'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
-				"<a href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</a>" +
+				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
                 "<table style='width:100%'>" +
                     "<tr>" +
 						"<td><b>Task Time</b></td>" +
@@ -55,6 +55,7 @@ jQuery(document).ready(function() {
             $('#tasksList').collapsibleset('refresh');
     }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
+    $(".finishTask:not(:first)").prop("disabled", true);
     
     //resetTaskTimer();
 
@@ -66,6 +67,13 @@ $(function(){
 
 //function finishTask(){
 jQuery('.finishTask').on('click', function() {
+    //$(this).prop('disabled', true);
+    //$(this).closest('.individualTask').click();
+    //$("#tasksList").children().trigger("collapse");
+    $(this).closest('.individualTask').accordion({active: false}).click();
+    //$(this).closest('.individualTask').trigger("collapse");
+    //$('#tasksList').collapsibleset('refresh');
+    
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
@@ -75,32 +83,23 @@ jQuery('.finishTask').on('click', function() {
 		completedTasks++;
 		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
-        if(expectedDurations[completedTasks] != null){
+        /*if(expectedDurations[completedTasks] != null){
         	document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
         }
         else{
         	document.getElementById("expectedDuration").innerHTML = "";
-        }
+        }*/
+        
 		if(completedTasks == totalTasks){
-			document.getElementById("finishTask").style.background='orange';
-			document.getElementById("finishTask").innerHTML = "Completed";
+			//document.getElementById("finishTask").style.background='orange';
+			document.getElementById("progress").innerHTML += " - Completed";
+            clearInterval(overallTimer);
+		    clearInterval(partialTimer);
 		}
         //this is where the ajax call will go to send the completed job off
         
         //------------------
-        
-        
-	
-
       
-	}
-	if(completedTasks == totalTasks){
-		clearInterval(overallTimer);
-		clearInterval(partialTimer);
-		
-		document.getElementById("taskName").innerHTML = "Routine Completed!";
-        document.getElementById("description").innerHTML = "Routine Completed!";
-        document.getElementById("expectedDuration").innerHTML = "Routine Completed!";
 	}
     keepAliveTwo(loginToken); 
 });

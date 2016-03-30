@@ -24,7 +24,6 @@ jQuery(document).ready(function() {
             }
         ).error(function(data) {
             //error goes here
-            keepAliveTwo(theToken, theUrl);
             logout();
         });
     } 
