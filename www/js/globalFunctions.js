@@ -24,7 +24,13 @@ jQuery(document).ready(function() {
             }
         ).error(function(data) {
             //error goes here
-            logout();
+            //keepAliveTwo(theToken, theUrl);
+            if (data.status == "401") {
+                logout();    
+            } else {
+                alert(data.error);
+                console.log(data.error);
+            }
         });
     } 
 });

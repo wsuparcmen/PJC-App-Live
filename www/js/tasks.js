@@ -22,7 +22,7 @@ jQuery(document).ready(function() {
     var completedTasks = 0;
     var totalTasks = amountOfTasks;
     for (var i = 0; i < amountOfTasks; i++) {
-         $("<div data-role='collapsible' class='individualTask'>" +
+         $("<div data-role='collapsible' class='individualTask' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
 				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
                 "<table style='width:100%'>" +
@@ -67,12 +67,6 @@ $(function(){
 
 //function finishTask(){
 jQuery('.finishTask').on('click', function() {
-    //$(this).prop('disabled', true);
-    //$(this).closest('.individualTask').click();
-    //$("#tasksList").children().trigger("collapse");
-    $(this).closest('.individualTask').accordion({active: false}).click();
-    //$(this).closest('.individualTask').trigger("collapse");
-    //$('#tasksList').collapsibleset('refresh');
     
     if(completedTasks < totalTasks){
 		resetTaskTimer();
@@ -80,8 +74,17 @@ jQuery('.finishTask').on('click', function() {
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / amountOfTasks));
+        
+        $(this).prop('disabled', true);
+        $('#task' + completedTasks).collapsible({collapsed: true});
 		completedTasks++;
-		document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
+        $('#task' + completedTasks).collapsible({collapsed: false});
+        $('.finishTask').each(function(index) {
+             if (completedTasks === index) {
+                $(this).prop('disabled', false);
+             }
+        });
+        document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
         /*if(expectedDurations[completedTasks] != null){
         	document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
