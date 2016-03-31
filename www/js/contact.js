@@ -20,7 +20,16 @@ function displayJobCoachInfo() {
 
         $.each(jobcoach, function (key, item) {
 			console.log(item);
-			$('#firstName').text(item.userName);
+			console.log(key);
+			if(key=="userName"){
+				$('#firstName').text(item);
+			}
+			if(key=="email"){
+				$('#email').text(item);
+			}
+			if(key=="phone"){
+				$('#phone').text(item);
+			}
             
         });
 
