@@ -2,7 +2,7 @@ jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
       
-	   setTimeout(function() {
+	setTimeout(function() {
         keepAliveTwo(loginToken);    
     }, 500);
 	
@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-b'><p>" + checkNullTime(item.expectedDuration) + "</p></div>" +
 					"<div class='ui-block-a'><b>Number of Tasks</b></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks.length + "</p></div>" +
-					"<div class='ui-block-a'><a href='#previousNotes' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
+					"<div class='ui-block-a'><a href='#notesList' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
 					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
 				"</div>" +
 			"</div>").appendTo($("#routineList"));
@@ -32,7 +32,6 @@ jQuery(document).ready(function() {
         });
 
     }
-
 	
     jQuery('a.begin-button').on('click', function(e) {
         e.preventDefault();
@@ -55,4 +54,3 @@ jQuery(document).ready(function() {
 function formatItem(item) {
       return item.routineTitle + ': ' + item.assigneeUserName + "'s Routine assigned by - " + item.creatorUserName;
 }
-

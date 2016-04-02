@@ -1,13 +1,13 @@
 $(document).on("pagecreate", function(){
 	if(document.getElementById("previousNotes").innerHTML == ""){
-		document.getElementById("emptyNotesList").innerText = "There are no previous notes for this task.";
+		document.getElementById("emptyNotesList").innerText = "There are no previous notes.";
 	}
 	
 	$("#save").click(function(){
-		document.getElementById("emptyNotesList").innerText = "";
-		
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
+		
+		document.getElementById("emptyNotesList").innerText = "";
 		
 		if(name.trim() == ""){
 			document.getElementById("nameError").style.color = "red";
@@ -75,7 +75,7 @@ function confirmAndDelete(item){
 		item.remove();
 		
 		if(document.getElementById("previousNotes").innerHTML == ""){
-			document.getElementById("emptyNotesList").innerText = "There are no previous notes for this task.";
+			document.getElementById("emptyNotesList").innerText = "There are no previous notes.";
 		}
 		
 		//delete note
@@ -112,6 +112,7 @@ function edit(item){
 	});
 	
 	$(".cancelEdit").on("click", function(){
+		item.find(".editNote")[0].innerHTML = "";
 		$(".saveEdit").off();
 		resetNoteControls(item);
 	});

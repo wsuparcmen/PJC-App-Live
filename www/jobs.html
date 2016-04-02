@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
 	<script type="text/javascript" src="js/jobs.js"></script>
-    <script type="text/javascript" src="js/globalFunctions.js"></script>
+	<script type="text/javascript" src="js/globalFunctions.js"></script>
+	<script type="text/javascript" src="js/routine_notes.js"></script>
 
 	<title>PARC Pocket Job Coach</title>
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -30,46 +31,31 @@
 
 	<div data-role="main" class="ui-content">
 		<h1>Job/Routine List</h1>
-		
 		<h2>Scheduled for Today</h2>
 		
-		<div id="routineList" data-role="collapsibleset">
-			
-		</div>
+		<div id="routineList" data-role="collapsibleset"></div>
 		
 		<div data-role="popup" id="makeNote" data-theme="a" data-overlay-theme="b" class="ui-content">
-			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-		
-			<form class="ui-body ui-body-a">
-				<label for="noteSubject">Subject</label>
-				<input type="text" name="noteSubject" id="noteSubject" value="Job Name"/>
+			<h3>Make a Note</h3>
+			<form id="noteForm" class="ui-body ui-body-a">
+				<label for="noteName">Subject <p id="nameError"></p></label>
+				<input type="text" name="noteName" id="noteName" value="Routine Name, Task Name"/>
 				
-				<label for="note">Note</label>
+				<label for="note">Note <p id="noteError"></p></label>
 				<textarea name="note" id="note"></textarea>
 				
 				<div class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="ui-btn ui-corner-all" id="save">Save</a></div>
-					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn ui-corner-all" id="cancel">Cancel</a></div>
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
 				</div>
 			</form>
 		</div>
 		
-		<div data-role="popup" id="previousNotes" data-theme="none">
-			<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-			
-			<div data-role="collapsibleset">
-				<div data-role="collapsible" data-collapsed="false">
-					<h3>Note Name</h3>
-					
-					<h4>Job Name, Task Name</h4>
-					
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p>
-					
-					<div class="ui-grid-a">
-						<div class="ui-block-a"><a href="#" class="ui-btn" id="edit">Edit</a></div>
-						<div class="ui-block-b"><a href="#" class="ui-btn" id="delete">Delete</a></div>
-					</div>
-				</div>
+		<div data-role="popup" id="notesList" data-theme="a">
+			<h3>Previous Notes</h3>
+			<div id="popupContent">
+				<p id="emptyNotesList" style="margin:20px"></p>
+				<div id="previousNotes" data-role="collapsibleset"></div>
 			</div>
 		</div>
 	</div>

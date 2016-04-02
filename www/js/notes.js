@@ -55,8 +55,8 @@ $(document).on("pagecreate", function(){
 });
 
 function confirmAndDelete(item){
-	$("#confirm .name").remove();
-	item.find(".name").clone().insertAfter("#question");
+	$("#confirm .title").remove();
+	item.find(".title").clone().insertAfter("#question");
 	
 	$("#confirm").popup("open");
 	
