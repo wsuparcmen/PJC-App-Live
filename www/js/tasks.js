@@ -1,19 +1,20 @@
 jQuery(document).ready(function() {
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
-    var amountOfTasks = 0;
+    var totalTasks = 0;
     var taskNames = [];
     var taskDescriptions = [];
     var expectedDurations = [];
     var routineList = JSON.parse(localStorage.getItem('routineList'));
     var jobTitle = localStorage.getItem('jobName');
     var parentOrCoach = "";
+    var now = [];
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
             console.log(item);
-            amountOfTasks = item.Tasks.length;
-            for (var i = 0; i < amountOfTasks; i++) {
+            totalTasks = item.Tasks.length;
+            for (var i = 0; i < totalTasks; i++) {
                 taskNames[i] = item.Tasks[i].taskName
                 taskDescriptions[i] = item.Tasks[i].taskDescription;
                 expectedDurations[i] = item.Tasks[i].expectedDuration;
@@ -22,19 +23,18 @@ jQuery(document).ready(function() {
         } 
     });
     var completedTasks = 0;
-    var totalTasks = amountOfTasks;
-    for (var i = 0; i < amountOfTasks; i++) {
+    for (var i = 0; i < totalTasks; i++) {
          $("<div data-role='collapsible' class='individualTask' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
 				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
                 "<table style='width:100%'>" +
                     "<tr>" +
 						"<td><b>Task Time</b></td>" +
-						"<td id='taskTime'>00:00:00</td>" +
+						"<td id='taskTime" + i + "'>00:00:00</td>" +
 					"</tr>" +
 					"<tr>" +
 						"<td><b>Estimated Time</b></td>" +
-						"<td id='expectedDuration'>" + expectedDurations[i] + "</td>" +
+						"<td id='expectedDuration" + i + "'>" + expectedDurations[i] + "</td>" +
 					"</tr>" +
 				"</table>" + 
                 "<br/>" +
@@ -67,7 +67,6 @@ $(function(){
 	});
 });
 
-//function finishTask(){
 jQuery('.finishTask').on('click', function() {
     
     if(completedTasks < totalTasks){
@@ -75,7 +74,7 @@ jQuery('.finishTask').on('click', function() {
 		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
-		progressbar.progressbar("value", total + (100 / amountOfTasks));
+		progressbar.progressbar("value", total + (100 / totalTasks));
         
         $(this).prop('disabled', true);
         $('#task' + completedTasks).collapsible({collapsed: true});
@@ -104,19 +103,26 @@ jQuery('.finishTask').on('click', function() {
                 "<p>You've finished the job! You did very well! Good job! Please click on the button below to go back to the home screen!</p>" +
                 "<a href='#' data-ajax='false' class='ui-btn' id='completeJob'>Complete Job</a>" + 
             "</p>").insertAfter('#tasksList');
-		}
-        
-        
+		}        
 	}
     keepAliveTwo(loginToken); 
 });
 
+//post job data
 jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       var job = {
         'creatorUsername':parentOrCoach,
         'routineTitle':jobTitle,
-        'startTime':'2016-03-24 03:04:25',
-        'stepEndTimes[0]':'2016-03-24 03:05:32',
+        'startTime':'2016-03-24 03:04:25'};
+        
+      for (var i = 0; i < totalTasks; i++) {
+          var stepEndTimes = "stepEndTimes[" + i + "]";
+          console.log(stepEndTimes);
+          $.extend(job, {'stepEndTimes[0]': now[i]});
+      }
+      console.log(job);
+        
+        /*'stepEndTimes[0]':'2016-03-24 03:05:32',
         'stepEndTimes[1]':'2016-03-24 03:07:05',
         'stepEndTimes[2]':'2016-03-24 03:10:49',
         'jobNotes[0].noteTitle':'Job Note 1',
@@ -131,8 +137,8 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         'stepNotes[1].note.noteMessage':'This is the second note for step 1',
         'stepNotes[2].stepNo':'2',
         'stepNotes[2].note.noteTitle':'Step 2 Note 1',
-        'stepNotes[2].note.noteMessage':'This is the first note for step 2'};
-      $.ajax({
+        'stepNotes[2].note.noteMessage':'This is the first note for step 2'};*/
+      /*$.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -144,10 +150,8 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         error: function(){
           alert("failure posting job");
         }
-      });
+      });*/
 });
-
-//}
 
 var overallTimer = setInterval(jobTimer, 1000);
 var seconds = 0;
@@ -170,7 +174,7 @@ var partialTimer = setInterval(taskTimer, 1000);
 var tSeconds = 0;
 var tMinutes = 0;
 var tHours = 0;
-function taskTimer(){
+function taskTimer(index){
 	tSeconds++;
 	if(tSeconds == 60){
 		tMinutes++;
@@ -180,13 +184,26 @@ function taskTimer(){
 		tHours++;
 		tMinutes = 0;
 	}
-    //document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+    document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
 }
-function resetTaskTimer(){
-	tSeconds = 0;
+function resetTaskTimer(index){
+    document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+    var currdate = new Date(); 
+    var h = addZero(currdate.getHours());
+    var m = addZero(currdate.getMinutes());
+    var s = addZero(currdate.getSeconds());
+    var currdate = (currdate.getFullYear()+ '-' + currdate.getMonth()+ 1) + '-' + currdate.getDate();
+    now[completedTasks] = currdate + " " + h + ":" + m + ":" + s;
+    tSeconds = 0;
 	tMinutes = 0;
 	tHours = 0;
-    //document.getElementById("taskTime").innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+}
+
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
 }
 
 function pad(number){
