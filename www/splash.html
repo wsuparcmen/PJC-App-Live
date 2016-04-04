@@ -20,53 +20,52 @@
     under the License.
 -->
 <html>
-    <head>
-		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="css/splash.css" />
-		<link rel="stylesheet" href="js/theme.min.css" />
-		<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
-		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-		<script type="text/javascript" src="js/chromeLoading.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
-        <script type="text/javascript" src="js/globalFunctions.js"></script>
+<head>
+	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="css/splash.css" />
+	<link rel="stylesheet" href="js/theme.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="js/chromeLoading.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+	<script type="text/javascript" src="js/globalFunctions.js"></script>
+	
+	<meta charset="utf-8" />
+	<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://pjc.gear.host https://pjc.gear.host" />-->
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+	<title>Hello World</title>
+</head>
+<body>
+	<div data-role="header" data-position="fixed">
+		<h1>PARC Pocket Job Coach</h1>
 		
-        <meta charset="utf-8" />
-        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://pjc.gear.host https://pjc.gear.host" />-->
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-        <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div data-role="header" data-position="fixed">
-			<h1>PARC Pocket Job Coach</h1>
-			<!--<button id="logout" class="ui-btn-right ui-btn ui-btn-icon-right ui-icon-gear" onclick="logout()">Logout</button>-->
-		
-			<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
-			<div data-role="popup" id="menu">
-				<ul data-role="listview" data-inset="true">
-					<li><a href="#" onclick="account()">My Account</a></li>
-					<li><a href="#" onclick="logout()">Log Out</a></li>
-				</ul>
-			</div>
+		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+		<div data-role="popup" id="menu">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#" onclick="account()">My Account</a></li>
+				<li><a href="#" onclick="logout()">Log Out</a></li>
+			</ul>
 		</div>
-		
-		<div data-role="main" class="ui-content">
-			<div class="app">
-				<h1>Hello Brad!</h1>
-				<p id="successOrFailure"></p>
-			</div>
-		
-			<div class="ui-grid-a ui-responsive">
-				<div class="ui-block-a"><a href="notifications.html" data-ajax="false" class="ui-btn ui-icon-alert ui-btn-icon-top">Notifications</a></div>
-				<div class="ui-block-b"><a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-check ui-btn-icon-top">Jobs</a></div>
-				<div class="ui-block-a"><a href="tools.html" data-ajax="false" class="ui-btn ui-icon-clock ui-btn-icon-top">Tools</a></div>
-				<div class="ui-block-b"><a href="contact.html" data-ajax="false" class="ui-btn ui-icon-phone ui-btn-icon-top">Contact</a></div>
-			</div>
+	</div>
+	
+	<div data-role="main" class="ui-content">
+		<div class="app">
+			<h1>Hello Brad!</h1>
+			<p id="successOrFailure"></p>
 		</div>
-		
-        <script type="text/javascript" src="js/splash.js"></script>
-    </body>
+	
+		<div class="ui-grid-a ui-responsive">
+			<div class="ui-block-a"><a href="notifications.html" data-ajax="false" class="ui-btn ui-icon-alert ui-btn-icon-top">Notifications</a></div>
+			<div class="ui-block-b"><a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-check ui-btn-icon-top">Jobs</a></div>
+			<div class="ui-block-a"><a href="tools.html" data-ajax="false" class="ui-btn ui-icon-clock ui-btn-icon-top">Tools</a></div>
+			<div class="ui-block-b"><a href="contact.html" data-ajax="false" class="ui-btn ui-icon-phone ui-btn-icon-top">Contact</a></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/splash.js"></script>
+</body>
 </html>

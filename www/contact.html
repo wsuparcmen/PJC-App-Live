@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
-		<link rel="stylesheet" href="js/theme.min.css" />
-		<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
-		<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
-		<script type="text/javascript" src="js/chromeLoading.js"></script>
-		<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
-		<script type="text/javascript" src="js/contact.js"></script>
-        <script type="text/javascript" src="js/globalFunctions.js"></script>
+<head>
+	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="js/theme.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="js/chromeLoading.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+	<script type="text/javascript" src="js/contact.js"></script>
+	<script type="text/javascript" src="js/globalFunctions.js"></script>
+	
+	<title>PARC Pocket Job Coach</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div data-role="header" data-position="fixed">
+		<a href="splash.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+		<h1>PARC Pocket Job Coach</h1>
 		
-		<title>PARC Pocket Job Coach</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-		<div data-role="header" data-position="fixed">
-			<a href="splash.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
-			<h1>PARC Pocket Job Coach</h1>
-			
-			<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
-			<div data-role="popup" id="menu">
-				<ul data-role="listview" data-inset="true">
-					<li><a href="#" onclick="account()">My Account</a></li>
-					<li><a href="#" onclick="logout()">Log Out</a></li>
-				</ul>
-			</div>
+		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+		<div data-role="popup" id="menu">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#" onclick="account()">My Account</a></li>
+				<li><a href="#" onclick="logout()">Log Out</a></li>
+			</ul>
 		</div>
+	</div>
 
-		<div data-role="main" class="ui-content">
-			<h1>Contact</h1>
-				<p>
-					<b>Job Coach Name:</b><br/>
-					First Last
-				</p>
-				<p>
-					<b>Phone Number:</b><br/>
-					(801) 123-4567
-				</p>
-				<p>
-					<b>E-Mail:</b><br/>
-					username@website.com
-				</p>
+	<div data-role="main" class="ui-content">
+		<h1>Contact</h1>
+			<p>
+				<b>Job Coach Name:</b><br/>
+				<span id="firstName"> </span>
+			</p>
+			<p>
+				<b>Phone Number:</b><br/>
+				<span id="phone"> </span>
+			</p>
+			<p>
+				<b>E-Mail:</b><br/>
+				<span id="email"> </span>
+			</p>
+	</div>
+	
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="splash.html" data-ajax="false" data-icon="home">Home</a></li>
+				<li><a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a></li>
+				<li><a href="contact.html" data-icon="phone">Contact</a></li>
+			</ul>
 		</div>
-		
-		<div data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li>
-						<a href="splash.html" data-ajax="false" data-icon="home">Home</a>
-					</li>
-					<li>
-						<a href="jobs.html" data-ajax="false" data-icon="check">Jobs</a>
-					</li>
-					<li>
-						<a href="contact.html" data-icon="phone">Contact</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-    </body>
+	</div>
+</body>
 </html>
