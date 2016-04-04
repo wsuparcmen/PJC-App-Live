@@ -9,6 +9,8 @@ jQuery(document).ready(function() {
     var jobTitle = localStorage.getItem('jobName');
     var parentOrCoach = "";
     var now = [];
+    var d = new Date();
+    var jobStartTime = addZero(d.getFullYear()) + '-' + addZero(d.getMonth()) + '-' + addZero(d.getDate());
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -47,7 +49,7 @@ jQuery(document).ready(function() {
 				"</div>" +
 			"</div>").appendTo($("#tasksList"));
             
-            $('.finishTask').css('border-color', 'orange');
+            $('.finishTask').css('border-color', '#1d873b');
             
             if (i == 0) {
                 $('.individualTask').attr('data-collapsed', 'false');
@@ -87,12 +89,14 @@ jQuery('.finishTask').on('click', function() {
         });
         document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
 		
-        /*if(expectedDurations[completedTasks] != null){
-        	document.getElementById("expectedDuration").innerHTML = expectedDurations[completedTasks];
+        if(expectedDurations[completedTasks] != null){
+        	document.getElementById("expectedDuration" + completedTasks).innerHTML = expectedDurations[completedTasks];
         }
         else{
-        	document.getElementById("expectedDuration").innerHTML = "";
-        }*/
+            if (completedTasks != totalTasks) {
+                document.getElementById("expectedDuration" + completedTasks).innerHTML = "00:00:00";
+            }
+        }
         
 		if(completedTasks == totalTasks){
 			document.getElementById("progress").innerHTML += " - Completed";
@@ -113,14 +117,13 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       var job = {
         'creatorUsername':parentOrCoach,
         'routineTitle':jobTitle,
-        'startTime':'2016-03-24 03:04:25'};
+        'startTime':jobStartTime};
         
       for (var i = 0; i < totalTasks; i++) {
-          var stepEndTimes = "stepEndTimes[" + i + "]";
-          //console.log(stepEndTimes);
           job['stepEndTimes[' + i + ']'] = now[i];
-          //$.extend(job, {'stepEndTimes[0]': now[i]});
       }
+      
+      
       console.log(job);
         
         /*'stepEndTimes[0]':'2016-03-24 03:05:32',
@@ -139,7 +142,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         'stepNotes[2].stepNo':'2',
         'stepNotes[2].note.noteTitle':'Step 2 Note 1',
         'stepNotes[2].note.noteMessage':'This is the first note for step 2'};*/
-      /*$.ajax({
+      $.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -151,7 +154,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         error: function(){
           alert("failure posting job");
         }
-      });*/
+      });
 });
 
 var overallTimer = setInterval(jobTimer, 1000);
@@ -189,12 +192,12 @@ function taskTimer(index){
 }
 function resetTaskTimer(index){
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
-    var currdate = new Date(); 
-    var h = addZero(currdate.getHours());
-    var m = addZero(currdate.getMinutes());
-    var s = addZero(currdate.getSeconds());
-    var currdate = addZero(currdate.getFullYear()) + '-' + addZero(currdate.getMonth()) + '-' + addZero(currdate.getDate());
-    now[completedTasks] = currdate + " " + h + ":" + m + ":" + s;
+    var currDate = new Date();
+    var h = addZero(currDate.getHours());
+    var m = addZero(currDate.getMinutes());
+    var s = addZero(currDate.getSeconds());
+    var currdate = addZero(currDate.getFullYear()) + '-' + addZero(currDate.getMonth()) + '-' + addZero(currDate.getDate());
+    now[completedTasks] = currDate + " " + h + ":" + m + ":" + s;
     tSeconds = 0;
 	tMinutes = 0;
 	tHours = 0;
