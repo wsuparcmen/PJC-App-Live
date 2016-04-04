@@ -117,8 +117,9 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         
       for (var i = 0; i < totalTasks; i++) {
           var stepEndTimes = "stepEndTimes[" + i + "]";
-          console.log(stepEndTimes);
-          $.extend(job, {'stepEndTimes[0]': now[i]});
+          //console.log(stepEndTimes);
+          job['stepEndTimes[' + i + ']'] = now[i];
+          //$.extend(job, {'stepEndTimes[0]': now[i]});
       }
       console.log(job);
         
@@ -192,7 +193,7 @@ function resetTaskTimer(index){
     var h = addZero(currdate.getHours());
     var m = addZero(currdate.getMinutes());
     var s = addZero(currdate.getSeconds());
-    var currdate = (currdate.getFullYear()+ '-' + currdate.getMonth()+ 1) + '-' + currdate.getDate();
+    var currdate = addZero(currdate.getFullYear()) + '-' + addZero(currdate.getMonth()) + '-' + addZero(currdate.getDate());
     now[completedTasks] = currdate + " " + h + ":" + m + ":" + s;
     tSeconds = 0;
 	tMinutes = 0;
