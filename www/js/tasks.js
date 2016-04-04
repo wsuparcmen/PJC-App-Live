@@ -7,6 +7,7 @@ jQuery(document).ready(function() {
     var expectedDurations = [];
     var routineList = JSON.parse(localStorage.getItem('routineList'));
     var jobTitle = localStorage.getItem('jobName');
+    var parentOrCoach = "";
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -16,6 +17,7 @@ jQuery(document).ready(function() {
                 taskNames[i] = item.Tasks[i].taskName
                 taskDescriptions[i] = item.Tasks[i].taskDescription;
                 expectedDurations[i] = item.Tasks[i].expectedDuration;
+                parentOrCoach = item.creatorUserName;
             }
         } 
     });
@@ -100,16 +102,51 @@ jQuery('.finishTask').on('click', function() {
             $("<p>" +
                 "<b><font size='6'>Congratulations!</font></b>" +
                 "<p>You've finished the job! You did very well! Good job! Please click on the button below to go back to the home screen!</p>" +
-                "<a href='splash.html' data-ajax='false' class='ui-btn' id='completeJob'>Complete Job</a>" + 
+                "<a href='#' data-ajax='false' class='ui-btn' id='completeJob'>Complete Job</a>" + 
             "</p>").insertAfter('#tasksList');
 		}
-        //this is where the ajax call will go to send the completed job off
         
-        //------------------
         
 	}
     keepAliveTwo(loginToken); 
 });
+
+jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
+      var job = {
+        'creatorUsername':parentOrCoach,
+        'routineTitle':jobTitle,
+        'startTime':'2016-03-24 03:04:25',
+        'stepEndTimes[0]':'2016-03-24 03:05:32',
+        'stepEndTimes[1]':'2016-03-24 03:07:05',
+        'stepEndTimes[2]':'2016-03-24 03:10:49',
+        'jobNotes[0].noteTitle':'Job Note 1',
+        'jobNotes[0].noteMessage':'This is the first Note',
+        'jobNotes[1].noteTitle':'Job Note 2',
+        'jobNotes[1].noteMessage':'This is the second Note',
+        'stepNotes[0].stepNo':'1',
+        'stepNotes[0].note.noteTitle':'Step 1 Note 1',
+        'stepNotes[0].note.noteMessage':'This is the first note for step 1',
+        'stepNotes[1].stepNo':'1',
+        'stepNotes[1].note.noteTitle':'Step 1 Note 2',
+        'stepNotes[1].note.noteMessage':'This is the second note for step 1',
+        'stepNotes[2].stepNo':'2',
+        'stepNotes[2].note.noteTitle':'Step 2 Note 1',
+        'stepNotes[2].note.noteMessage':'This is the first note for step 2'};
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        data: job,
+        url: uri + "Job?token=" + loginToken,
+        success: function(data){
+          alert("success posting job");
+          window.location.href = "splash.html";
+        },
+        error: function(){
+          alert("failure posting job");
+        }
+      });
+});
+
 //}
 
 var overallTimer = setInterval(jobTimer, 1000);
