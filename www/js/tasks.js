@@ -94,15 +94,19 @@ jQuery('.finishTask').on('click', function() {
         }*/
         
 		if(completedTasks == totalTasks){
-			//document.getElementById("finishTask").style.background='orange';
 			document.getElementById("progress").innerHTML += " - Completed";
             clearInterval(overallTimer);
 		    clearInterval(partialTimer);
+            $("<p>" +
+                "<b><font size='6'>Congratulations!</font></b>" +
+                "<p>You've finished the job! You did very well! Good job! Please click on the button below to go back to the home screen!</p>" +
+                "<a href='splash.html' data-ajax='false' class='ui-btn' id='completeJob'>Complete Job</a>" + 
+            "</p>").insertAfter('#tasksList');
 		}
         //this is where the ajax call will go to send the completed job off
         
         //------------------
-      
+        
 	}
     keepAliveTwo(loginToken); 
 });

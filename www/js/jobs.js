@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
         var routineList = JSON.parse(localStorage.getItem('routineList'));
 
         $.each(routineList, function (key, item) {
-            console.log(item);
+            console.log(item.routineTitle);
             $("<div data-role='collapsible'>" +
 				"<h3>" + item.routineTitle + "</h3>" +
 				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button'>Begin Routine</a>" +

@@ -26,9 +26,8 @@ jQuery(document).ready(function() {
             //error goes here
             //keepAliveTwo(theToken, theUrl);
             if (data.status == "401") {
-                logout();    
+                logout();
             } else {
-                alert(data.error);
                 console.log(data.error);
             }
         });
