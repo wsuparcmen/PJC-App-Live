@@ -180,7 +180,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           window.location.href = "splash.html";
         },
         error: function(){
-          //alert("failure posting job");
+          alert("failure posting job");
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }
