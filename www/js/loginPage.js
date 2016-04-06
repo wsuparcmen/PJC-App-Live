@@ -4,6 +4,7 @@ function submitLogin() {
 	   var uri = 'http://pjcdbrebuild.gear.host/api/Login';
 	   var day = new Date();
 	   var now = day.getTime();
+     var name=$('#username').val();
        var login = {
              'UserName': $('#username').val(),
              'Password': $('#password').val(),
@@ -17,6 +18,8 @@ function submitLogin() {
              success: function (data) {
                 window.localStorage.setItem("token", data);
                 window.location.href = 'splash.html';
+                localStorage.setItem('userName',name); 
+                
                 //$.mobile.changePage('splash.html', {transition: "slideup", changeHash: false});
                 //$('#data').html(window.localStorage.getItem("token"));
              },
@@ -30,6 +33,9 @@ function submitLogin() {
 
 jQuery(document).ready(function() {
    if (window.localStorage.getItem("token") !== null) {
-        window.location.href = 'splash.html';   
+       
+        alert(name);
+        window.location.href = 'splash.html';  
+
    }
 });

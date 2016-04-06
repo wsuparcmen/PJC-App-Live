@@ -1,6 +1,8 @@
 jQuery(document).ready(function () {
     console.log(localStorage.getItem('routineList'));
     localStorage.removeItem('routineList');
+    document.getElementById("userName").innerHTML = "Hello " + localStorage.getItem('userName') + "!";
+     document.getElementById("userName").value = localStorage.getItem('name');
     
     console.log(localStorage.getItem('routineList'));
     var loginToken = window.localStorage.getItem("token");
