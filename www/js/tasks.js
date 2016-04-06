@@ -49,6 +49,8 @@ jQuery(document).ready(function() {
 			"</div>").appendTo($("#tasksList"));
             
             $('.finishTask').css('border-color', '#1d873b');
+            $('.finishTask').css('border-width', '3px');
+            //$('.finishTask').css('background', '#5ECDF2');
             
             if (i == 0) {
                 $('.individualTask').attr('data-collapsed', 'false');
@@ -59,8 +61,6 @@ jQuery(document).ready(function() {
     }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
     $(".finishTask:not(:first)").prop("disabled", true);
-    
-    //resetTaskTimer();
 
 $(function(){
 	$( "#progressbar" ).progressbar({
@@ -171,11 +171,12 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         data: job,
         url: uri + "Job?token=" + loginToken,
         success: function(data){
-          alert("success posting job");
           window.location.href = "splash.html";
         },
         error: function(){
           alert("failure posting job");
+          console.log("Failure posting job");
+          window.location.href = "splash.html";
         }
       });
 });
