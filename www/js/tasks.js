@@ -9,8 +9,7 @@ jQuery(document).ready(function() {
     var jobTitle = localStorage.getItem('jobName');
     var parentOrCoach = "";
     var now = [];
-    var d = new Date();
-    var jobStartTime = addZero(d.getFullYear()) + '-' + addZero(d.getMonth()) + '-' + addZero(d.getDate());
+    var jobStartTime = formatCurrentDateTime();
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -114,14 +113,41 @@ jQuery('.finishTask').on('click', function() {
 
 //post job data
 jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
+      /*var job = {
+        'creatorUsername':parentOrCoach,
+        'routineTitle':jobTitle,
+        'startTime':jobStartTime,
+        'stepEndTimes':[null],
+        'jobNotes':[{'noteTitle':null,'noteMessage':null}],
+        'stepNotes':[{'stepNo':null,'note':{'noteTitle':null,'noteMessage':null}}]};*/
+
       var job = {
         'creatorUsername':parentOrCoach,
         'routineTitle':jobTitle,
-        'startTime':jobStartTime};
+        'startTime':jobStartTime,
+        'stepEndTimes':[null],
+        'jobNotes':null,
+        'stepNotes':null};
         
       for (var i = 0; i < totalTasks; i++) {
-          job['stepEndTimes[' + i + ']'] = now[i];
+          job.stepEndTimes[i] = now[i];
       }
+
+      //var note = {'noteTitle':null,'noteMessage':null};
+      //var jobNote = note;
+      //var stepNote = {'stepNo':null,'note':note};
+      //for (...) {
+          //job.jobNotes[i] = jobNote;
+      //}
+      //if (number of jobNotes == 0)
+          //job.jobNotes = null;
+      //for (...) {
+          //job.stepNotes[i] = stepNote;
+      //}
+      //if (number of stepNotes == 0)
+          //job.stepNotes = null;
+      
+      console.log(job);
         
         /*'stepEndTimes[0]':'2016-03-24 03:05:32',
         'stepEndTimes[1]':'2016-03-24 03:07:05',
@@ -190,15 +216,20 @@ function taskTimer(index){
 }
 function resetTaskTimer(index){
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+
+    now[completedTasks] = formatCurrentDateTime();
+    tSeconds = 0;
+	tMinutes = 0;
+	tHours = 0;
+}
+
+function formatCurrentDateTime(){
     var currDate = new Date();
     var h = addZero(currDate.getHours());
     var m = addZero(currDate.getMinutes());
     var s = addZero(currDate.getSeconds());
-    var currdate = addZero(currDate.getFullYear()) + '-' + addZero(currDate.getMonth()) + '-' + addZero(currDate.getDate());
-    now[completedTasks] = currDate + " " + h + ":" + m + ":" + s;
-    tSeconds = 0;
-	tMinutes = 0;
-	tHours = 0;
+    var currdate = currDate.getFullYear() + '-' + addZero(currDate.getMonth() + 1) + '-' + addZero(currDate.getDate());
+    return currdate + " " + h + ":" + m + ":" + s;
 }
 
 function addZero(i) {
