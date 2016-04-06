@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-b' id='description'><p>" + taskDescriptions[i] + "</p></div>" +
 					"<div class='ui-block-a'></div>" +
 					"<div class='ui-block-a'><a href='#notesList' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
-					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
+					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a></div>" +
 				"</div>" +
 			"</div>").appendTo($("#tasksList"));
             
@@ -111,6 +111,12 @@ jQuery('.finishTask').on('click', function() {
     keepAliveTwo(loginToken); 
 });
 
+jQuery('.make-note').on('click', function() {
+    var self = jQuery(this);
+    document.getElementById("noteName").value = $('#routineName').text() + ", " + self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0]; 
+    //document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0]; 
+});
+
 //post job data
 jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       /*var job = {
@@ -133,19 +139,19 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           job.stepEndTimes[i] = now[i];
       }
 
-      //var note = {'noteTitle':null,'noteMessage':null};
-      //var jobNote = note;
-      //var stepNote = {'stepNo':null,'note':note};
-      //for (...) {
-          //job.jobNotes[i] = jobNote;
-      //}
-      //if (number of jobNotes == 0)
-          //job.jobNotes = null;
-      //for (...) {
-          //job.stepNotes[i] = stepNote;
-      //}
-      //if (number of stepNotes == 0)
-          //job.stepNotes = null;
+      /*var note = {'noteTitle':null,'noteMessage':null};
+      var jobNote = note;
+      var stepNote = {'stepNo':null,'note':note};
+      for (...) {
+          job.jobNotes[i] = jobNote;
+      }
+      if (number of jobNotes == 0)
+          job.jobNotes = null;
+      for (...) {
+          job.stepNotes[i] = stepNote;
+      }
+      if (number of stepNotes == 0)
+          job.stepNotes = null;*/
       
       console.log(job);
         
@@ -174,7 +180,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           window.location.href = "splash.html";
         },
         error: function(){
-          alert("failure posting job");
+          //alert("failure posting job");
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }

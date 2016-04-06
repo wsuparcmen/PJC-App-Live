@@ -17,14 +17,14 @@ jQuery(document).ready(function() {
 				"<h3>" + item.routineTitle + "</h3>" +
 				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button'>Begin Routine</a>" +
 				"<div class='ui-grid-a ui-responsive'>" +
-					"<div class='ui-block-a'><h4>Description</h4></div>" +
-					"<div class='ui-block-b'><p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>" +
+					/*"<div class='ui-block-a'><h4>Description</h4></div>" +
+					"<div class='ui-block-b'><p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>" +*/
 					"<div class='ui-block-a'><b>Estimated Time</b></div>" +
 					"<div class='ui-block-b'><p>" + checkNullTime(item.expectedDuration) + "</p></div>" +
 					"<div class='ui-block-a'><b>Number of Tasks</b></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks.length + "</p></div>" +
 					"<div class='ui-block-a'><a href='#notesList' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
-					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Make Note</a></div>" +
+					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a></div>" +
 				"</div>" +
 			"</div>").appendTo($("#routineList"));
 			
@@ -39,6 +39,11 @@ jQuery(document).ready(function() {
         var tempJobName = self.parent().prev().find('a').contents().text().split(' click')[0];
         localStorage.setItem("jobName", tempJobName);
         keepAliveTwo(loginToken, "tasks.html");
+    });
+    
+    jQuery('.make-note').on('click', function() {
+        var self = jQuery(this);
+        document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
     });
     
     function checkNullTime(duration) {
