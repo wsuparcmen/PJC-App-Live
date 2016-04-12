@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
     
     console.log(localStorage.getItem('routineList'));
     var loginToken = window.localStorage.getItem("token");
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://pjc.gear.host/api/';
 
 	
     $.getJSON(uri + "Routine",
