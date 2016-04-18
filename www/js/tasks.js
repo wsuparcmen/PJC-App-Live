@@ -10,6 +10,8 @@ jQuery(document).ready(function() {
     var parentOrCoach = "";
     var now = [];
     var jobStartTime = formatCurrentDateTime();
+    var jobNotesArray;
+    var taskNotesArray;
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -118,92 +120,33 @@ jQuery('.make-note').on('click', function() {
 
 //post job data
 jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
-      /*var job = {
-        'creatorUsername':parentOrCoach,
-        'routineTitle':jobTitle,
-        'startTime':jobStartTime,
-        'stepEndTimes':[null],
-        'jobNotes':[{'noteTitle':null,'noteMessage':null}],
-        'stepNotes':[{'stepNo':null,'note':{'noteTitle':null,'noteMessage':null}}]};*/
 
       var job = {
         'creatorUsername':parentOrCoach,
         'routineTitle':jobTitle,
         'startTime':jobStartTime,
-        'stepEndTimes':[null],
-        'jobNotes':
-            [
-                {noteTitle: null, noteMessage: null}
-            ],
-        'stepNotes':
-            [
-                {stepNo: null, 
-                    note: 
-                    {
-                      noteTitle: null, noteMessage: null
-                    }
-                }
-            ]};
+        'stepEndTimes':[],
+        'jobNotes':[],
+        'stepNotes':[]};
         
       for (var i = 0; i < totalTasks; i++) {
-          job.stepEndTimes[i] = now[i];
+          job.stepEndTimes.push(now[i]);
       }
       
-      var jobNotesArray = JSON.parse(localStorage.getItem('jobNotesArray'));
-      var taskNotesArray = JSON.parse(localStorage.getItem('taskNotesArray'));
-      /*for (var i = 0; i < jobNotesArray.length; i++) {
-          job.jobNotes[0].noteTitle = jobNotesArray[i].name;
-          //job.jobNotes[0].noteMessage = jobNotesArray[i].note;
-      }*/
+      jobNotesArray = JSON.parse(localStorage.getItem('jobNotesArray'+jobTitle));
+      taskNotesArray = JSON.parse(localStorage.getItem('taskNotesArray'));
       
       $.each(jobNotesArray, function (key, item) {
-          console.log(key);
-          console.log(item);
-          job.jobNotes[key].noteTitle = item.name;
-          job.jobNotes[key].noteMessage = item.note;
+          job.jobNotes.push({"noteTitle":item.name, "noteMessage":item.note});
       });
+      
       $.each(taskNotesArray, function (key, item) {
-          console.log(key);
-          console.log(item.name);
-          job.stepNotes[key].stepNo = key +1;
-          job.stepNotes[key].note.noteTitle = item.name;
-          job.stepNotes[key].note.noteMessage = item.note;
-          console.log(job.stepNotes[key].stepNo);
+          job.stepNotes.push({"stepNo":(key+1), "note":{"noteTitle":item.name, "noteMessage":item.note}});
       });
-
-      /*var note = {'noteTitle':null,'noteMessage':null};
-      var jobNote = note;
-      var stepNote = {'stepNo':null,'note':note};
-      for (...) {
-          job.jobNotes[i] = jobNote;
-      }
-      if (number of jobNotes == 0)
-          job.jobNotes = null;
-      for (...) {
-          job.stepNotes[i] = stepNote;
-      }
-      if (number of stepNotes == 0)
-          job.stepNotes = null;*/
       
       console.log(job);
         
-        /*'stepEndTimes[0]':'2016-03-24 03:05:32',
-        'stepEndTimes[1]':'2016-03-24 03:07:05',
-        'stepEndTimes[2]':'2016-03-24 03:10:49',
-        'jobNotes[0].noteTitle':'Job Note 1',
-        'jobNotes[0].noteMessage':'This is the first Note',
-        'jobNotes[1].noteTitle':'Job Note 2',
-        'jobNotes[1].noteMessage':'This is the second Note',
-        'stepNotes[0].stepNo':'1',
-        'stepNotes[0].note.noteTitle':'Step 1 Note 1',
-        'stepNotes[0].note.noteMessage':'This is the first note for step 1',
-        'stepNotes[1].stepNo':'1',
-        'stepNotes[1].note.noteTitle':'Step 1 Note 2',
-        'stepNotes[1].note.noteMessage':'This is the second note for step 1',
-        'stepNotes[2].stepNo':'2',
-        'stepNotes[2].note.noteTitle':'Step 2 Note 1',
-        'stepNotes[2].note.noteMessage':'This is the first note for step 2'};*/
-      /*$.ajax({
+      $.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -216,7 +159,10 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }
-      });*/
+      });
+      window.localStorage.removeItem("jobNotesArray"+jobTitle);
+      window.localStorage.removeItem("taskNotesArray");
+      job = {};
 });
 
 var overallTimer = setInterval(jobTimer, 1000);

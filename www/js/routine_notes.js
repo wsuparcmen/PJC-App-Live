@@ -4,6 +4,7 @@ $(document).on("pagecreate", function(){
     var item = {};
 	
 	$("#save").click(function(){
+        var self = jQuery(this);
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
         item = {name:name, note:note};
@@ -27,14 +28,14 @@ $(document).on("pagecreate", function(){
 		if(name != "" && note !=""){
             if ((window.location.href).indexOf("jobs") > -1) {
                 jobNotesArray.push(item);
-                window.localStorage.removeItem("jobNotesArray");
-                window.localStorage.setItem("jobNotesArray", JSON.stringify(jobNotesArray));
-                console.log(JSON.parse(window.localStorage.getItem("jobNotesArray")));    
+                window.localStorage.removeItem("jobNotesArray"+name);
+                window.localStorage.setItem("jobNotesArray"+name, JSON.stringify(jobNotesArray));
+                //console.log(JSON.parse(window.localStorage.getItem("jobNotesArray")));    
             } else {
                 taskNotesArray.push(item);
                 window.localStorage.removeItem("taskNotesArray");
                 window.localStorage.setItem("taskNotesArray", JSON.stringify(taskNotesArray));
-                console.log(JSON.parse(window.localStorage.getItem("taskNotesArray")));
+                //console.log(JSON.parse(window.localStorage.getItem("taskNotesArray")));
             }
             
             
