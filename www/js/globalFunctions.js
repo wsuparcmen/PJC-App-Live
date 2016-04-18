@@ -2,6 +2,7 @@ jQuery(document).ready(function() {
     window.logout = function() {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("jobName");
+        window.localStorage.removeItem("name");
         window.localStorage.removeItem("routineList");
         window.location.href = "Login.html";
     }
@@ -28,7 +29,13 @@ jQuery(document).ready(function() {
             if (data.status == "401") {
                 logout();
             } else {
-                console.log(data.error);
+                //alert("keepalive two not working");
+                if (window.localStorage.getItem("token") == null) {
+                    logout();
+                } else {
+                    alert("something broke inside keepalivetwo");
+                    console.log(data.error);
+                }
             }
         });
     } 

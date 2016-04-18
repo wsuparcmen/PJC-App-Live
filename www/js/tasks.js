@@ -131,12 +131,31 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         'routineTitle':jobTitle,
         'startTime':jobStartTime,
         'stepEndTimes':[null],
-        'jobNotes':null,
+        'jobNotes':[null],
         'stepNotes':null};
         
       for (var i = 0; i < totalTasks; i++) {
           job.stepEndTimes[i] = now[i];
       }
+      
+      var jobNotesArray = JSON.parse(localStorage.getItem('jobNotesArray'));
+      var taskNotesArray = JSON.parse(localStorage.getItem('taskNotesArray'));
+      console.log(job.jobNotes);
+      for (var i = 0; i < jobNotesArray.length; i++) {
+          job.jobNotes[0].noteTitle = jobNotesArray[i].name;
+          job.jobNotes[0].noteMessage = jobNotesArray[i].note;
+      }
+      
+      /*$.each(jobNotesArray, function (key, item) {
+          console.log(key);
+          console.log(item);
+          job.jobNotes[key].noteTitle = "this";
+          job.jobNotes[key].noteMessage = item.note;
+      });*/
+      $.each(taskNotesArray, function (key, item) {
+          console.log(key);
+          console.log(item);
+      });
 
       /*var note = {'noteTitle':null,'noteMessage':null};
       var jobNote = note;
@@ -170,7 +189,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         'stepNotes[2].stepNo':'2',
         'stepNotes[2].note.noteTitle':'Step 2 Note 1',
         'stepNotes[2].note.noteMessage':'This is the first note for step 2'};*/
-      $.ajax({
+      /*$.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -183,7 +202,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }
-      });
+      });*/
 });
 
 var overallTimer = setInterval(jobTimer, 1000);
