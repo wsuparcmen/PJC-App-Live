@@ -131,8 +131,20 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
         'routineTitle':jobTitle,
         'startTime':jobStartTime,
         'stepEndTimes':[null],
-        'jobNotes':[null],
-        'stepNotes':null};
+        'jobNotes':
+            [
+                {noteTitle: null, noteMessage: null}
+            ],
+        'stepNotes':
+            [
+                {
+                    stepNo: null, 
+                    note: 
+                        [
+                            {noteTitle: null, noteMessage: null}
+                        ]
+                }
+            ]};
         
       for (var i = 0; i < totalTasks; i++) {
           job.stepEndTimes[i] = now[i];
@@ -140,21 +152,23 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       
       var jobNotesArray = JSON.parse(localStorage.getItem('jobNotesArray'));
       var taskNotesArray = JSON.parse(localStorage.getItem('taskNotesArray'));
-      console.log(job.jobNotes);
-      for (var i = 0; i < jobNotesArray.length; i++) {
+      /*for (var i = 0; i < jobNotesArray.length; i++) {
           job.jobNotes[0].noteTitle = jobNotesArray[i].name;
-          job.jobNotes[0].noteMessage = jobNotesArray[i].note;
-      }
+          //job.jobNotes[0].noteMessage = jobNotesArray[i].note;
+      }*/
       
-      /*$.each(jobNotesArray, function (key, item) {
+      $.each(jobNotesArray, function (key, item) {
           console.log(key);
           console.log(item);
-          job.jobNotes[key].noteTitle = "this";
+          job.jobNotes[key].noteTitle = item.name;
           job.jobNotes[key].noteMessage = item.note;
-      });*/
+      });
       $.each(taskNotesArray, function (key, item) {
           console.log(key);
           console.log(item);
+          job.stepNotes[key].stepNo = item.name;
+          job.stepNotes[key].note.noteTitle = item.name;
+          job.stepNotes[key].note.noteMessage = item.note;
       });
 
       /*var note = {'noteTitle':null,'noteMessage':null};
