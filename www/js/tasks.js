@@ -137,12 +137,11 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
             ],
         'stepNotes':
             [
-                {
-                    stepNo: null, 
+                {stepNo: null, 
                     note: 
-                        [
-                            {noteTitle: null, noteMessage: null}
-                        ]
+                    {
+                      noteTitle: null, noteMessage: null
+                    }
                 }
             ]};
         
@@ -165,10 +164,11 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       });
       $.each(taskNotesArray, function (key, item) {
           console.log(key);
-          console.log(item);
-          job.stepNotes[key].stepNo = item.name;
+          console.log(item.name);
+          job.stepNotes[key].stepNo = key +1;
           job.stepNotes[key].note.noteTitle = item.name;
           job.stepNotes[key].note.noteMessage = item.note;
+          console.log(job.stepNotes[key].stepNo);
       });
 
       /*var note = {'noteTitle':null,'noteMessage':null};
