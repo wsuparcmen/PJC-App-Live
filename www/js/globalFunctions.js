@@ -2,8 +2,11 @@ jQuery(document).ready(function() {
     window.logout = function() {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("jobName");
-        window.localStorage.removeItem("name");
         window.localStorage.removeItem("routineList");
+		window.localStorage.removeItem("name");
+		window.localStorage.removeItem("jobcoach");
+		window.localStorage.removeItem("parentInfo");
+		window.localStorage.removeItem("userName");
         window.location.href = "Login.html";
     }
     window.account = function() {
