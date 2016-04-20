@@ -33,7 +33,7 @@ jQuery(document).ready(function() {
                 if (window.localStorage.getItem("token") == null) {
                     logout();
                 } else {
-                    alert("something broke inside keepalivetwo");
+                    console.log("SOMETHING SERIOUS BROKE!!!");
                     console.log(data.error);
                 }
             }
