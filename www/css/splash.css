@@ -2,3 +2,14 @@
     float: right;
     cursor: pointer;
 }
+
+.app-name {
+    margin-right: 20% !important;
+    margin-left: 20% !important;
+}
+
+.pjclogo {
+    /*margin: 0% 8% !important;*/
+    max-width: 100% !important;
+    align: middle !important;
+}

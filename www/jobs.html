@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="icon.png">
 	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -18,7 +20,7 @@
 <body>
 	<div data-role="header" data-position="fixed">
 		<a href="splash.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
-		<h1>PARC Pocket Job Coach</h1>
+		<h1 class="app-name">PARC Pocket Job Coach</h1>
 		
 		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
 		<div data-role="popup" id="menu">
@@ -39,7 +41,7 @@
 			<h3>Make a Note</h3>
 			<form id="noteForm" class="ui-body ui-body-a">
 				<label for="noteName">Subject <p id="nameError"></p></label>
-				<input type="text" name="noteName" id="noteName" value=""/>
+				<input type="text" name="noteName" id="noteName" value="" readonly/>
 				
 				<label for="note">Note <p id="noteError"></p></label>
 				<textarea name="note" id="note"></textarea>
@@ -49,14 +51,6 @@
 					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
 				</div>
 			</form>
-		</div>
-		
-		<div data-role="popup" id="notesList" data-theme="a">
-			<h3>Previous Notes</h3>
-			<div id="popupContent">
-				<p id="emptyNotesList" style="margin:20px"></p>
-				<div id="previousNotes" data-role="collapsibleset"></div>
-			</div>
 		</div>
 	</div>
 	

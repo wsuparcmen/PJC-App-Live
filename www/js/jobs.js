@@ -23,9 +23,8 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-b'><p>" + checkNullTime(item.expectedDuration) + "</p></div>" +
 					"<div class='ui-block-a'><b>Number of Tasks</b></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks.length + "</p></div>" +
-					"<div class='ui-block-a'><a href='#notesList' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
-					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a></div>" +
-				"</div>" +
+                "</div>" + 
+				"<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a>" +
 			"</div>").appendTo($("#routineList"));
 			
 			$('#routineList').collapsibleset('refresh');

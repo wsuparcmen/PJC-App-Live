@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="icon.png">
 	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -17,7 +19,7 @@
 <body>
 	<div data-role="header" data-position="fixed">
 		<a href="tools.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
-		<h1>PARC Pocket Job Coach</h1>
+		<h1 class="app-name">PARC Pocket Job Coach</h1>
 		
 		<a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
 		<div data-role="popup" id="menu">
@@ -44,39 +46,10 @@
 			</div>
 		</form>
 		
-		<h2>Previous Notes</h2>
-		<form class="ui-filterable"><input id="searchNotes" data-type="search" /></form>
-		
-		<div id="previousNotes" data-role="collapsibleset" data-icon="false" data-split-icon="delete" data-filter="true" data-input="#searchNotes">
-		</div>
-		
-		<div id="confirm" class="ui-content" data-role="popup" data-theme="a">
-			<p id="question"><b>Are you sure you want to delete the note:</b></p>
-			<div class="ui-grid-a ui-responsive">
-				<div class="ui-block-a"><a id="yes" class="ui-btn" data-rel="back">Yes</a></div>
-				<div class="ui-block-b"><a id="cancel" class="ui-btn" data-rel="back">Cancel</a></div>
-			</div>
-		</div>
-		
 		<div id="emptyNote" class="ui-content" data-role="popup" data-theme="a">
 			<h3>Message</h3>
 			<p id="message"></p>
 			<a id="okay" class="ui-btn" data-rel="back">Okay</a>
-		</div>
-		
-		<div id="editNote" class="ui-content" data-role="popup" data-theme="a">
-			<h3>Edit a Note</h3>
-			<form class='ui-body ui-body-a'>
-				<label for='noteName'>Name</label>
-				<input type='text' name='noteName' id='editName' value="test"/>
-				<label for='note'>Note</label>
-				<textarea cols='40' name='note' id='editBody'></textarea>
-				
-				<div class="ui-grid-a ui-responsive">
-					<div class="ui-block-a"><a id="saveEdit" class="ui-btn" data-rel="back">Save</a></div>
-					<div class="ui-block-b"><a id="cancelEdit" class="ui-btn" data-rel="back">Cancel</a></div>
-				</div>
-			</form>
 		</div>
 	</div>
 	

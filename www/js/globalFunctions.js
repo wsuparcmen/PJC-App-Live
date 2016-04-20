@@ -3,6 +3,10 @@ jQuery(document).ready(function() {
         window.localStorage.removeItem("token");
         window.localStorage.removeItem("jobName");
         window.localStorage.removeItem("routineList");
+		window.localStorage.removeItem("name");
+		window.localStorage.removeItem("jobcoach");
+		window.localStorage.removeItem("parentInfo");
+		window.localStorage.removeItem("userName");
         window.location.href = "Login.html";
     }
     window.account = function() {
@@ -28,7 +32,13 @@ jQuery(document).ready(function() {
             if (data.status == "401") {
                 logout();
             } else {
-                console.log(data.error);
+                //alert("keepalive two not working");
+                if (window.localStorage.getItem("token") == null) {
+                    logout();
+                } else {
+                    console.log("SOMETHING SERIOUS BROKE!!!");
+                    console.log(data.error);
+                }
             }
         });
     } 

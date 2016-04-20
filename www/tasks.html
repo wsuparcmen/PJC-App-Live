@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="js/jquery-ui.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
@@ -35,7 +36,7 @@
 			<h3>Make a Note</h3>
 			<form id="noteForm" class="ui-body ui-body-a">
 				<label for="noteName">Subject <p id="nameError"></p></label>
-				<input type="text" name="noteName" id="noteName" value=""/>
+				<input type="text" name="noteName" id="noteName" value="" readonly/>
 				
 				<label for="note">Note <p id="noteError"></p></label>
 				<textarea name="note" id="note"></textarea>
@@ -45,14 +46,6 @@
 					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
 				</div>
 			</form>
-		</div>
-		
-		<div data-role="popup" id="notesList" data-theme="a">
-			<h3>Previous Notes</h3>
-			<div id="popupContent">
-				<p id="emptyNotesList" style="margin:20px"></p>
-				<div id="previousNotes" data-role="collapsibleset"></div>
-			</div>
 		</div>
 	</div>
 </body>    

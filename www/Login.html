@@ -2,10 +2,11 @@
 <html>
 <head>
 	<title>PARC Pocket Job Coach</title>
-    
+    <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
     <script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -14,21 +15,24 @@
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src http://pjc.gear.host https://pjc.gear.host">-->
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"">
 </head>
 <body>
 	<div data-role="header" data-position="fixed">
-		<h1>PARC Pocket Job Coach</h1>
+		<h1 class="app-name">PARC Pocket Job Coach</h1>
 	</div>
 
 	<div data-role="main" class="ui-content">
-		<img src="img/pjclogo.png" style="margin:0% 8%; max-width:100%" />
+		<img class="pjclogo" src="img/pjclogo.png" align="center"/>
 		<div class="ui-corner-all custom-corners" style="margin:0% 8%">
 			<div class="ui-bar ui-bar-a">
 				<h3>Login</h3>
 			</div>
-
+            
 			<div class="ui-body ui-body-a">  
+                <script>
+                    console.log("test");
+                </script>
 				<p>
 					<label for="username">Username:</label>
 					<input type="text" name="username" id="username" placeholder="Username" value="">

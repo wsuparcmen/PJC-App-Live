@@ -10,6 +10,8 @@ jQuery(document).ready(function() {
     var parentOrCoach = "";
     var now = [];
     var jobStartTime = formatCurrentDateTime();
+    var jobNotesArray;
+    var taskNotesArray;
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -43,9 +45,8 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-a'><b>Description</b></div>" +
 					"<div class='ui-block-b' id='description'><p>" + taskDescriptions[i] + "</p></div>" +
 					"<div class='ui-block-a'></div>" +
-					"<div class='ui-block-a'><a href='#notesList' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn'>Previous Notes</a></div>" +
-					"<div class='ui-block-b'><a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a></div>" +
-				"</div>" +
+                "</div>" +
+			    "<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a>" +
 			"</div>").appendTo($("#tasksList"));
             
             $('.finishTask').css('border-color', '#1d873b');
@@ -119,58 +120,32 @@ jQuery('.make-note').on('click', function() {
 
 //post job data
 jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
-      /*var job = {
-        'creatorUsername':parentOrCoach,
-        'routineTitle':jobTitle,
-        'startTime':jobStartTime,
-        'stepEndTimes':[null],
-        'jobNotes':[{'noteTitle':null,'noteMessage':null}],
-        'stepNotes':[{'stepNo':null,'note':{'noteTitle':null,'noteMessage':null}}]};*/
 
       var job = {
         'creatorUsername':parentOrCoach,
         'routineTitle':jobTitle,
         'startTime':jobStartTime,
-        'stepEndTimes':[null],
-        'jobNotes':null,
-        'stepNotes':null};
+        'stepEndTimes':[],
+        'jobNotes':[],
+        'stepNotes':[]};
         
       for (var i = 0; i < totalTasks; i++) {
-          job.stepEndTimes[i] = now[i];
+          job.stepEndTimes.push(now[i]);
       }
-
-      /*var note = {'noteTitle':null,'noteMessage':null};
-      var jobNote = note;
-      var stepNote = {'stepNo':null,'note':note};
-      for (...) {
-          job.jobNotes[i] = jobNote;
-      }
-      if (number of jobNotes == 0)
-          job.jobNotes = null;
-      for (...) {
-          job.stepNotes[i] = stepNote;
-      }
-      if (number of stepNotes == 0)
-          job.stepNotes = null;*/
+      
+      jobNotesArray = JSON.parse(localStorage.getItem('jobNotesArray'+jobTitle));
+      taskNotesArray = JSON.parse(localStorage.getItem('taskNotesArray'));
+      
+      $.each(jobNotesArray, function (key, item) {
+          job.jobNotes.push({"noteTitle":item.name, "noteMessage":item.note});
+      });
+      
+      $.each(taskNotesArray, function (key, item) {
+          job.stepNotes.push({"stepNo":(key+1), "note":{"noteTitle":item.name, "noteMessage":item.note}});
+      });
       
       console.log(job);
         
-        /*'stepEndTimes[0]':'2016-03-24 03:05:32',
-        'stepEndTimes[1]':'2016-03-24 03:07:05',
-        'stepEndTimes[2]':'2016-03-24 03:10:49',
-        'jobNotes[0].noteTitle':'Job Note 1',
-        'jobNotes[0].noteMessage':'This is the first Note',
-        'jobNotes[1].noteTitle':'Job Note 2',
-        'jobNotes[1].noteMessage':'This is the second Note',
-        'stepNotes[0].stepNo':'1',
-        'stepNotes[0].note.noteTitle':'Step 1 Note 1',
-        'stepNotes[0].note.noteMessage':'This is the first note for step 1',
-        'stepNotes[1].stepNo':'1',
-        'stepNotes[1].note.noteTitle':'Step 1 Note 2',
-        'stepNotes[1].note.noteMessage':'This is the second note for step 1',
-        'stepNotes[2].stepNo':'2',
-        'stepNotes[2].note.noteTitle':'Step 2 Note 1',
-        'stepNotes[2].note.noteMessage':'This is the first note for step 2'};*/
       $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -185,6 +160,9 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           window.location.href = "splash.html";
         }
       });
+      window.localStorage.removeItem("jobNotesArray"+jobTitle);
+      window.localStorage.removeItem("taskNotesArray");
+      job = {};
 });
 
 var overallTimer = setInterval(jobTimer, 1000);
