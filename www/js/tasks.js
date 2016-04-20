@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-b' id='description'><p>" + taskDescriptions[i] + "</p></div>" +
 					"<div class='ui-block-a'></div>" +
                 "</div>" +
-			    "<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note' style='background-color:#1acb70;'>Make Note</a>" +
+			    "<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note' style='background-color:#1de27c;'>Make Note</a>" +
 			"</div>").appendTo($("#tasksList"));
             
             $('.finishTask').css('border-color', '#1d873b');

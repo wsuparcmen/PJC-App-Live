@@ -24,7 +24,7 @@ jQuery(document).ready(function() {
 					"<div class='ui-block-a'><b>Number of Tasks</b></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks.length + "</p></div>" +
                 "</div>" + 
-				"<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a>" +
+				"<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note' style='background-color:#1de27c;'>Make Note</a>" +
 			"</div>").appendTo($("#routineList"));
 			
 			$('#routineList').collapsibleset('refresh');
