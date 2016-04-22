@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
 });
 
 $(document).on("pagecreate", function(){
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://pjc.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     
 	$("#save").click(function(){
