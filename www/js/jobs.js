@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
             console.log(item.routineTitle);
             $("<div data-role='collapsible'>" +
 				"<h3>" + item.routineTitle + "</h3>" +
-				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button'>Begin Routine</a>" +
+				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button' style='background-color:#1de27c;'>Begin Routine</a>" +
 				"<div class='ui-grid-a ui-responsive'>" +
 					/*"<div class='ui-block-a'><h4>Description</h4></div>" +
 					"<div class='ui-block-b'><p>" + item.Tasks[0].TaskCategory.categoryName + " | "  +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum...</p></div>" +*/
@@ -27,6 +27,8 @@ jQuery(document).ready(function() {
 				"<a href='#makeNote' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn make-note'>Make Note</a>" +
 			"</div>").appendTo($("#routineList"));
 			
+			$('.begin-button').css('border-color', '#1d873b');
+            $('.begin-button').css('border-width', '3px');
 			$('#routineList').collapsibleset('refresh');
         });
 

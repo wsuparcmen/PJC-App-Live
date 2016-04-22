@@ -50,6 +50,7 @@ jQuery(document).ready(function() {
 			"</div>").appendTo($("#tasksList"));
             
             $('.finishTask').css('border-color', '#1d873b');
+			$('.finishTask').css('background-color', '#1de27c');
             $('.finishTask').css('border-width', '3px');
             //$('.finishTask').css('background', '#5ECDF2');
             
