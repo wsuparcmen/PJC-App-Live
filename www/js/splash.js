@@ -15,7 +15,7 @@ jQuery(document).ready(function () {
     ).error(function() {
         console.log("ROUTINE LIST IS NOT SET");  
     });
-    console.log(localStorage.getItem('routineList'));
+    //console.log(localStorage.getItem('routineList'));
     
     setTimeout(function() {
         keepAliveTwo(loginToken);    

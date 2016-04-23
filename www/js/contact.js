@@ -24,6 +24,10 @@ jQuery(document).ready(function () {
 		).error(function() {
 			console.log("parentInfo not set");  
 		});
+        
+        setTimeout(function() {
+            keepAliveTwo(loginToken);    
+        }, 500);
 });
 
 

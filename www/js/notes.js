@@ -44,4 +44,7 @@ $(document).on("pagecreate", function(){
 	$("#clear").click(function(){
 		document.getElementById("noteForm").reset();
 	});
+    setTimeout(function() {
+        keepAliveTwo(loginToken);    
+    }, 500);
 });
