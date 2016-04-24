@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
     });
     var completedTasks = 0;
     for (var i = 0; i < totalTasks; i++) {
-         $("<div data-role='collapsible' class='individualTask' id='task" + i + "'>" +
+         $("<div data-role='collapsible' class='individualTask' stepnumber='" + (i+1) + "' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
 				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
                 "<table style='width:100%'>" +
@@ -115,7 +115,8 @@ jQuery('.finishTask').on('click', function() {
 
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
-    document.getElementById("noteName").value = $('#routineName').text() + ", " + self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0]; 
+    //document.getElementById("noteName").value = $('#routineName').text() + ", " + self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
+    document.getElementById("stepNumber").value = self.closest('.ui-collapsible').attr('stepnumber');
     //document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0]; 
 });
 
@@ -142,7 +143,8 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       });
       
       $.each(taskNotesArray, function (key, item) {
-          job.stepNotes.push({"stepNo":(key+1), "note":{"noteTitle":item.name, "noteMessage":item.note}});
+          var stepNumber = item.stepNumber;
+          job.stepNotes.push({"stepNo":stepNumber, "note":{"noteTitle":item.name, "noteMessage":item.note}});
       });
       
       console.log(job);

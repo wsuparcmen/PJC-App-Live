@@ -7,7 +7,8 @@ $(document).on("pagecreate", function(){
         var self = jQuery(this);
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
-        item = {name:name, note:note};
+        var stepNo = document.getElementById("stepNumber").value;
+        item = {name:name, note:note, stepNumber:stepNo};
 		
 		if(name.trim() == ""){
 			document.getElementById("nameError").style.color = "red";
