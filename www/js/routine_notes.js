@@ -7,7 +7,10 @@ $(document).on("pagecreate", function(){
         var self = jQuery(this);
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
-        var stepNo = document.getElementById("stepNumber").value;
+        var stepNo;
+        if ((window.location.href).indexOf("tasks") > -1) {
+            stepNo = document.getElementById("stepNumber").value;   
+        }
         item = {name:name, note:note, stepNumber:stepNo};
 		
 		if(name.trim() == ""){
