@@ -7,11 +7,15 @@ $(document).on("pagecreate", function(){
         var self = jQuery(this);
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
+        var hiddenJobName = document.getElementById("hiddenJobName").value;
         var stepNo;
         if ((window.location.href).indexOf("tasks") > -1) {
-            stepNo = document.getElementById("stepNumber").value;   
+            stepNo = document.getElementById("stepNumber").value;  
+            item = {name:name, note:note, stepNumber:stepNo}; 
+        } else {
+            item = {name:name, note:note};   
         }
-        item = {name:name, note:note, stepNumber:stepNo};
+        console.log(hiddenJobName);
 		
 		if(name.trim() == ""){
 			document.getElementById("nameError").style.color = "red";
@@ -32,8 +36,8 @@ $(document).on("pagecreate", function(){
 		if(name != "" && note !=""){
             if ((window.location.href).indexOf("jobs") > -1) {
                 jobNotesArray.push(item);
-                window.localStorage.removeItem("jobNotesArray"+name);
-                window.localStorage.setItem("jobNotesArray"+name, JSON.stringify(jobNotesArray));
+                window.localStorage.removeItem("jobNotesArray"+hiddenJobName);
+                window.localStorage.setItem("jobNotesArray"+hiddenJobName, JSON.stringify(jobNotesArray));
                 //console.log(JSON.parse(window.localStorage.getItem("jobNotesArray")));    
             } else {
                 taskNotesArray.push(item);

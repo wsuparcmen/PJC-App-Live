@@ -149,7 +149,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
       
       console.log(job);
         
-      $.ajax({
+      /*$.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -162,7 +162,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }
-      });
+      });*/
       window.localStorage.removeItem("jobNotesArray"+jobTitle);
       window.localStorage.removeItem("taskNotesArray");
       job = {};
