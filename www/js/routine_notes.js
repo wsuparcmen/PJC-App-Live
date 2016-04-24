@@ -15,7 +15,6 @@ $(document).on("pagecreate", function(){
         } else {
             item = {name:name, note:note};   
         }
-        console.log(hiddenJobName);
 		
 		if(name.trim() == ""){
 			document.getElementById("nameError").style.color = "red";
@@ -38,12 +37,10 @@ $(document).on("pagecreate", function(){
                 jobNotesArray.push(item);
                 window.localStorage.removeItem("jobNotesArray"+hiddenJobName);
                 window.localStorage.setItem("jobNotesArray"+hiddenJobName, JSON.stringify(jobNotesArray));
-                //console.log(JSON.parse(window.localStorage.getItem("jobNotesArray")));    
             } else {
                 taskNotesArray.push(item);
                 window.localStorage.removeItem("taskNotesArray");
                 window.localStorage.setItem("taskNotesArray", JSON.stringify(taskNotesArray));
-                //console.log(JSON.parse(window.localStorage.getItem("taskNotesArray")));
             }
             
             

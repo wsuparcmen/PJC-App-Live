@@ -52,7 +52,6 @@ jQuery(document).ready(function() {
             $('.finishTask').css('border-color', '#1d873b');
 			$('.finishTask').css('background-color', '#1de27c');
             $('.finishTask').css('border-width', '3px');
-            //$('.finishTask').css('background', '#5ECDF2');
             
             if (i == 0) {
                 $('.individualTask').attr('data-collapsed', 'false');
@@ -115,9 +114,7 @@ jQuery('.finishTask').on('click', function() {
 
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
-    //document.getElementById("noteName").value = $('#routineName').text() + ", " + self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
     document.getElementById("stepNumber").value = self.closest('.ui-collapsible').attr('stepnumber');
-    //document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0]; 
 });
 
 //post job data
@@ -146,10 +143,8 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           var stepNumber = item.stepNumber;
           job.stepNotes.push({"stepNo":stepNumber, "note":{"noteTitle":item.name, "noteMessage":item.note}});
       });
-      
-      console.log(job);
         
-      /*$.ajax({
+      $.ajax({
         type: 'POST',
         dataType: 'json',
         data: job,
@@ -162,7 +157,7 @@ jQuery('[data-role="main"]').on('click', 'a#completeJob', function() {
           console.log("Failure posting job");
           window.location.href = "splash.html";
         }
-      });*/
+      });
       window.localStorage.removeItem("jobNotesArray"+jobTitle);
       window.localStorage.removeItem("taskNotesArray");
       job = {};
