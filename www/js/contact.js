@@ -1,4 +1,23 @@
 jQuery(document).ready(function () {
+  
+    // This section tests appending click to call and click to text
+    
+    var contactNumber = '801-777-4035';
+    var defaultMessage = 'I require attention regarding my job.';
+    var p = new Phone(contactNumber);
+    $('#phone').text(contactNumber);
+    $('#phone').append(p.loadClickToCall());
+    $('#phone').append(p.loadClickToText(defaultMessage));
+    
+    contactNumber = '801-355-0000';
+    var defaultMessage = 'Dear parent. Help!';
+    p = new Phone(contactNumber);
+    $('#parentPhone').text(contactNumber);
+    $('#parentPhone').append(p.loadClickToCall());
+    $('#parentPhone').append(p.loadClickToText(defaultMessage));
+    
+    //  
+     
 	var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
 	$.getJSON(uri + "JobCoach",
