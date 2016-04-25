@@ -1,4 +1,5 @@
 function calculateWage() {
+    var loginToken = window.localStorage.getItem("token");
     setTimeout(function() {
         keepAliveTwo(loginToken);    
     }, 500);
