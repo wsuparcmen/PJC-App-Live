@@ -7,7 +7,15 @@ $(document).on("pagecreate", function(){
         var self = jQuery(this);
 		var name = document.getElementById("noteName").value;
 		var note = document.getElementById("note").value;
-        item = {name:name, note:note};
+        var stepNo;
+        var hiddenJobName;
+        if ((window.location.href).indexOf("tasks") > -1) {
+            stepNo = document.getElementById("stepNumber").value;  
+            item = {name:name, note:note, stepNumber:stepNo}; 
+        } else {
+            hiddenJobName = document.getElementById("hiddenJobName").value;
+            item = {name:name, note:note};   
+        }
 		
 		if(name.trim() == ""){
 			document.getElementById("nameError").style.color = "red";
@@ -28,14 +36,12 @@ $(document).on("pagecreate", function(){
 		if(name != "" && note !=""){
             if ((window.location.href).indexOf("jobs") > -1) {
                 jobNotesArray.push(item);
-                window.localStorage.removeItem("jobNotesArray"+name);
-                window.localStorage.setItem("jobNotesArray"+name, JSON.stringify(jobNotesArray));
-                //console.log(JSON.parse(window.localStorage.getItem("jobNotesArray")));    
+                window.localStorage.removeItem("jobNotesArray"+hiddenJobName);
+                window.localStorage.setItem("jobNotesArray"+hiddenJobName, JSON.stringify(jobNotesArray));
             } else {
                 taskNotesArray.push(item);
                 window.localStorage.removeItem("taskNotesArray");
                 window.localStorage.setItem("taskNotesArray", JSON.stringify(taskNotesArray));
-                //console.log(JSON.parse(window.localStorage.getItem("taskNotesArray")));
             }
             
             

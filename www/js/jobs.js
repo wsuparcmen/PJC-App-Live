@@ -44,7 +44,8 @@ jQuery(document).ready(function() {
     
     jQuery('.make-note').on('click', function() {
         var self = jQuery(this);
-        document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
+        //document.getElementById("noteName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
+        document.getElementById("hiddenJobName").value = self.closest('.ui-collapsible').find('h3 a').text().split(' click')[0];
     });
     
     function checkNullTime(duration) {

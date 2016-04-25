@@ -1,4 +1,7 @@
 function calculateWage() {
+    setTimeout(function() {
+        keepAliveTwo(loginToken);    
+    }, 500);
 	var h = parseFloat(document.getElementById("hours").value);
 	var w = parseFloat(document.getElementById("wage").value).toFixed(2);
 	
