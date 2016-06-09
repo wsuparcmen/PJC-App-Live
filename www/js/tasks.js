@@ -61,7 +61,9 @@ jQuery(document).ready(function() {
             $('#tasksList').collapsibleset('refresh');
     }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
+
     $(".finishTask:not(:first)").prop("disabled", true);
+    $("h3:not(:first)").addClass("avoid-clicks");
 
 $(function(){
 	$( "#progressbar" ).progressbar({
@@ -69,6 +71,7 @@ $(function(){
 	});
 });
 
+//This function handles
 jQuery('.finishTask').on('click', function() {
     
     if(completedTasks < totalTasks){
@@ -80,11 +83,14 @@ jQuery('.finishTask').on('click', function() {
         
         $(this).prop('disabled', true);
         $('#task' + completedTasks).collapsible({collapsed: true});
+        $(this).parents(':eq(0)').siblings().addClass("avoid-clicks");
 		completedTasks++;
         $('#task' + completedTasks).collapsible({collapsed: false});
         $('.finishTask').each(function(index) {
              if (completedTasks === index) {
+                 $(this).parents(':eq(0)').siblings().removeClass("avoid-clicks");
                 $(this).prop('disabled', false);
+
              }
         });
         document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
