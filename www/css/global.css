@@ -1,0 +1,8 @@
+.avoid-clicks {
+    pointer-events: none;
+}
+
+.reminder-form{
+    width:80%;
+    height:25%;
+}

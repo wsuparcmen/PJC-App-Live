@@ -29,7 +29,7 @@ jQuery(document).ready(function() {
     for (var i = 0; i < totalTasks; i++) {
          $("<div data-role='collapsible' class='individualTask' stepnumber='" + (i+1) + "' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
-				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
+				"<a href='#verification' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn finishTask'>Finish Task</a>" +
                 "<table style='width:100%'>" +
                     "<tr>" +
 						"<td><b>Task Time</b></td>" +
@@ -73,13 +73,12 @@ $(function(){
 
 //This function handles
 jQuery('.finishTask').on('click', function() {
-    
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
-		progressbar.progressbar("value", total + (100 / totalTasks));
+		progressbar.progressbar("value", total + (100 / completedTasks));
         
         $(this).prop('disabled', true);
         $('#task' + completedTasks).collapsible({collapsed: true});

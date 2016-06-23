@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="js/jquery-ui.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="./css/global.css"/>
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -13,11 +14,7 @@
 	<script type="text/javascript" src="js/tasks.js"></script>
     <script type="text/javascript" src="js/globalFunctions.js"></script>
 	<script type="text/javascript" src="js/routine_notes.js"></script>
-	<style>
-		.avoid-clicks {
-			pointer-events: none;
-		}
-	</style>
+
 	
 	<title>PARC Pocket Job Coach</title>
     <meta charset="utf-8" />
@@ -36,6 +33,18 @@
 		<hr/>
 		
 		<div id="tasksList" data-role="collapsible-set"></div>
+		<div data-role="popup" id="verification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+			<form id="checkOffForm" class="ui-body ui-body-a">
+
+				<label for="reminder">Reminder <p id="reminderNote"></p></label>
+				<textarea name="reminder" id="reminder"></textarea>
+
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="yes">Yes</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="no">No</a></div>
+				</div>
+			</form>
+		</div>
 		
 		<div data-role="popup" id="makeNote" data-theme="a" data-overlay-theme="b" class="ui-content">
 			<h3>Make a Note</h3>
