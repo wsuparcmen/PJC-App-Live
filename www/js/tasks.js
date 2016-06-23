@@ -117,6 +117,20 @@ jQuery('.finishTask').on('click', function() {
     keepAliveTwo(loginToken); 
 });
 
+    $( "#verification" ).on({
+        popupafterclose: function() {
+            setTimeout(function() { $( "#finalVerification" ).popup( "open" ) }, 100 );
+        }
+    });
+
+jQuery('#reminder-yes').on('click',function(){
+    $("#verification").popup("close");
+
+
+
+})
+
+
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
     document.getElementById("stepNumber").value = self.closest('.ui-collapsible').attr('stepnumber');

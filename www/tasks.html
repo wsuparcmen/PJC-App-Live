@@ -33,15 +33,29 @@
 		<hr/>
 		
 		<div id="tasksList" data-role="collapsible-set"></div>
-		<div data-role="popup" id="verification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
-			<form id="checkOffForm" class="ui-body ui-body-a">
+			<div data-role="popup" id="verification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+				<h3>Reminder</h3>
+				<form id="checkOffForm" class="ui-body ui-body-a">
+					<textarea name="reminder" id="reminder"></textarea>
 
-				<label for="reminder">Reminder <p id="reminderNote"></p></label>
-				<textarea name="reminder" id="reminder"></textarea>
+					<div class="ui-grid-a">
+						<div class="ui-block-a"><a href="#"  class="ui-btn" id="reminder-yes">Yes</a></div>
+						<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="reminder-no">No</a></div>
+					</div>
+				</form>
+			</div>
+
+<!-- this block is for the final checkoff step -->
+
+		<div data-role="popup" data-rel='popup' data-position-to='window' data-transition='pop' id="finalVerification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+
+			<form id="fVerificationForm" class="ui-body ui-body-a">
+
+				<h3>Are you ready to sign off?</h3>
 
 				<div class="ui-grid-a">
-					<div class="ui-block-a"><a href="#" class="ui-btn" id="yes">Yes</a></div>
-					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="no">No</a></div>
+					<div class="ui-block-a"><a href="#"  class="ui-btn" id="final-yes">Yes</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="final-no">No</a></div>
 				</div>
 			</form>
 		</div>
