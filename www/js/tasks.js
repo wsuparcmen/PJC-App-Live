@@ -78,7 +78,7 @@ jQuery('#final-yes').on('click', function() {
 		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
-		progressbar.progressbar("value", total + (100 / completedTasks));
+		progressbar.progressbar("value", total + (100 / totalTasks));
         
         $(this).prop('disabled', true);
         $('#task' + completedTasks).collapsible({collapsed: true});
