@@ -72,7 +72,7 @@ $(function(){
 });
 
 //This function handles
-jQuery('.finishTask').on('click', function() {
+jQuery('#final-yes').on('click', function() {
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
@@ -82,7 +82,7 @@ jQuery('.finishTask').on('click', function() {
         
         $(this).prop('disabled', true);
         $('#task' + completedTasks).collapsible({collapsed: true});
-        $(this).parents(':eq(0)').siblings().addClass("avoid-clicks");
+        $(this).parents(':eq(0)').siblings("h3").addClass("avoid-clicks");
 		completedTasks++;
         $('#task' + completedTasks).collapsible({collapsed: false});
         $('.finishTask').each(function(index) {
@@ -114,22 +114,31 @@ jQuery('.finishTask').on('click', function() {
             "</p>").insertAfter('#tasksList');
 		}        
 	}
-    keepAliveTwo(loginToken); 
+    keepAliveTwo(loginToken);
+    $( "#finalVerification" ).popup("close");
 });
 
+
+
+
+    // When a user clicks "No" on a reminder popup it i will disable the final verification pop up from showing up.
+    $("#reminder-no").on('click',function(){
+        $( "#finalVerification" ).popup( "option", "disabled", true );
+    });
+
+    // Whe a user clicks "yes" on a reminder popup it will enable the final popup.
+    $("#reminder-yes").on('click',function(){
+        $( "#finalVerification" ).popup( "option", "disabled", false );
+        $("#verification").popup("close");
+
+    });
+
+    // This causes the final verification popup to show af
     $( "#verification" ).on({
         popupafterclose: function() {
             setTimeout(function() { $( "#finalVerification" ).popup( "open" ) }, 100 );
         }
     });
-
-jQuery('#reminder-yes').on('click',function(){
-    $("#verification").popup("close");
-
-
-
-})
-
 
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
