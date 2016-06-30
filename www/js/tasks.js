@@ -12,6 +12,8 @@ jQuery(document).ready(function() {
     var jobStartTime = formatCurrentDateTime();
     var jobNotesArray;
     var taskNotesArray;
+    var completedTasks = 0;
+    var reminderArray = ["blah blah blah blah","Tahtahtahtahthaothatata","This chicken is good!!","Esdfasdfasfasfsafs"];
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -25,7 +27,7 @@ jQuery(document).ready(function() {
             }
         } 
     });
-    var completedTasks = 0;
+
     for (var i = 0; i < totalTasks; i++) {
          $("<div data-role='collapsible' class='individualTask' stepnumber='" + (i+1) + "' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
@@ -79,14 +81,15 @@ jQuery('#final-yes').on('click', function() {
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / totalTasks));
-        
         $(this).prop('disabled', true);
-        $('#task' + completedTasks).collapsible({collapsed: true});
-        $(this).parents(':eq(0)').siblings("h3").addClass("avoid-clicks");
+        $('#task' + completedTasks).collapsible({collapsed: true}).addClass("avoid-clicks");
+       // $(this).parents(':eq(0)').siblings("h3").addClass("avoid-clicks");
+       // $('#task'+ completedTasks).addClass("avoid-clicks");
 		completedTasks++;
         $('#task' + completedTasks).collapsible({collapsed: false});
         $('.finishTask').each(function(index) {
              if (completedTasks === index) {
+
                  $(this).parents(':eq(0)').siblings().removeClass("avoid-clicks");
                 $(this).prop('disabled', false);
 
@@ -117,6 +120,13 @@ jQuery('#final-yes').on('click', function() {
     keepAliveTwo(loginToken);
     $( "#finalVerification" ).popup("close");
 });
+
+
+    $(".finishTask").on('click',function(){
+        console.log(completedTasks);
+        $("#reminder").text(reminderArray[completedTasks]);
+    });
+
 
 
 
