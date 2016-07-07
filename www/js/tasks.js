@@ -13,7 +13,8 @@ jQuery(document).ready(function() {
     var jobNotesArray;
     var taskNotesArray;
     var completedTasks = 0;
-    var reminderArray = ["blah blah blah blah","Tahtahtahtahthaothatata","This chicken is good!!","Esdfasdfasfasfsafs"];
+    var reminderArray = ["Did you shake their hand?","Are there streaks on the mirror?","Are there any spots on the floor",
+        "Are there any marks?", "Is it full?", "Did you order the pizza?"];
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
