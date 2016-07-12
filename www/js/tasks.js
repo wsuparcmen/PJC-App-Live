@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
     var jobNotesArray;
     var taskNotesArray;
     var completedTasks = 0;
-    var reminderArray = ["blah blah blah blah","Tahtahtahtahthaothatata","This chicken is good!!","Esdfasdfasfasfsafs"];
+    var reminderArray = [];
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -24,6 +24,12 @@ jQuery(document).ready(function() {
                 taskDescriptions[i] = item.Tasks[i].taskDescription;
                 expectedDurations[i] = item.Tasks[i].expectedDuration;
                 parentOrCoach = item.creatorUserName;
+                if(item.Tasks[i].Feedbacks[0] != undefined) {
+                    reminderArray[i] = (item.Tasks[i].Feedbacks[0].feedbackMessage) || "";
+                }else if(item.Tasks[i].Feedbacks[0] == undefined)
+                {
+                    reminderArray[i] = "No Reminders";
+                }
             }
         } 
     });
