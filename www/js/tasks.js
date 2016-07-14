@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+    $('#fVerification').hide();
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     var totalTasks = 0;
@@ -82,6 +83,12 @@ $(function(){
 
 //This function handles
 jQuery('#final-yes').on('click', function() {
+
+    // here we are hiding and showing checkoff steps again
+
+    $('#fVerification').hide();
+    $('#reminderCheck').show();
+
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
@@ -124,8 +131,10 @@ jQuery('#final-yes').on('click', function() {
             "</p>").insertAfter('#tasksList');
 		}        
 	}
+
+
     keepAliveTwo(loginToken);
-    $( "#finalVerification" ).popup("close");
+    $( "#verification" ).popup("close");
 });
 
 
@@ -145,17 +154,27 @@ jQuery('#final-yes').on('click', function() {
 
     // Whe a user clicks "yes" on a reminder popup it will enable the final popup.
     $("#reminder-yes").on('click',function(){
-        $( "#finalVerification" ).popup( "option", "disabled", false );
-        $("#verification").popup("close");
+        //$( "#finalVerification" ).popup( "option", "disabled", false );
+        //$("#verification").popup("close");
+        $('#reminderCheck').hide();
+    $('#fVerification').show();
+
+
+    });
+
+    $("#final-no").on('click',function(){
+        $('#reminderCheck').show();
+        $('#fVerification').hide();
+
 
     });
 
     // This causes the final verification popup to show af
-    $( "#verification" ).on({
+    /*$( "#verification" ).on({
         popupafterclose: function() {
             setTimeout(function() { $( "#finalVerification" ).popup( "open" ) }, 100 );
         }
-    });
+    });*/
 
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
