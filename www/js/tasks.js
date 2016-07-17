@@ -242,7 +242,22 @@ function jobTimer(){
 		minutes = 0;
 	}
     document.getElementById("overallTime").innerHTML = "<b>Overall Time - </b>" + pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+
+
+    expectedDurationExceeded2()
 }
+
+
+    //This function checks for if the time the task takes exceeds the expected duration.
+function expectedDurationExceeded2(){
+
+    if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
+
+        alert("Time exceeded");
+        navigator.vibrate(1000);
+    }
+  
+    }
 
 var partialTimer = setInterval(taskTimer, 1000);
 var tSeconds = 0;
@@ -259,6 +274,8 @@ function taskTimer(index){
 		tMinutes = 0;
 	}
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+
+
 }
 function resetTaskTimer(index){
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
