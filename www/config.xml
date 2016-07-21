@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.example.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
+          xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pocket Job Coach - Sandbox</name>
     <description>
         Pocket Job Coach allows job coaching through a phone gap app.
@@ -9,8 +10,7 @@
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-vibration" source="pgb" spec="0.3.13" />
-    <plugin name="cordova-plugin-dialogs" source="pgb" spec="0.3.13" />
+
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -20,11 +20,17 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
-        <icon height="180" src="icon.png" width="180" />
+        <icon src="icon.png" width="180" height="180" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <engine name="android" spec="~5.1.1" />
+    <!--org.apache.cordova.core.vibration-->
+   <!-- <gap:plugin name="cordova-plugin-dialogs" />
+    <gap:plugin name="cordova-plugin-vibration" />-->
+    <plugin name="cordova-plugin-vibration" />
+    <plugin name="cordova-plugin-dialogs" />
+
+
 </widget>
