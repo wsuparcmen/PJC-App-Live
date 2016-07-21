@@ -247,13 +247,16 @@ function jobTimer(){
     expectedDurationExceeded2()
 }
 
-
+    function onDeviceReady() {
+        console.log(navigator.vibrate);
+    }
     //This function checks for if the time the task takes exceeds the expected duration.
 function expectedDurationExceeded2(){
 
-    if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
 
-        alert("Time exceeded");
+    if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
+        onDeviceReady();
+        navigator.notification.alert('Time exceeded');
         navigator.vibrate(1000);
     }
   
