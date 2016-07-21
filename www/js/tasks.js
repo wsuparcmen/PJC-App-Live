@@ -80,6 +80,11 @@ $(function(){
 		value: 0
 	});
 });
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        console.log(navigator.vibrate);
+        console.log(navigator.notification);
+    }
 
 //This function handles
 jQuery('#final-yes').on('click', function() {
@@ -246,10 +251,7 @@ function jobTimer(){
 
     expectedDurationExceeded2()
 }
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        console.log(navigator.vibrate);
-    }
+
     //This function checks for if the time the task takes exceeds the expected duration.
 function expectedDurationExceeded2(){
 
