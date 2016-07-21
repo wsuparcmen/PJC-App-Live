@@ -28,6 +28,6 @@
     <!--org.apache.cordova.core.vibration-->
     <gap:plugin name="cordova-plugin-dialogs" />
     <gap:plugin name="cordova-plugin-vibration" />
-    <gap:plugin name="cordova-plugin-whitelist" />
+
 
 </widget>
