@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+	<link rel="stylesheet" href="js/jquery-ui.css" />
+	<link rel="stylesheet" href="js/theme.min.css" />
+	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="./css/global.css"/>
+	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+	<script type="text/javascript" src="js/chromeLoading.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/tasks.js"></script>
+    <script type="text/javascript" src="js/globalFunctions.js"></script>
+	<script type="text/javascript" src="js/routine_notes.js"></script>
+
+	
+	<title>PARC Pocket Job Coach</title>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div data-role="header" data-position="fixed">
+		<a href="jobs.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Exit</a>
+		<h1 id="routineName"></h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<p id="overallTime"><b>Overall Time -</b> 00:00:00</p>
+		<p><b id="progress">Overall Progress - </b><div id="progressbar"></div></p>
+		
+		<hr/>
+		
+		<div id="tasksList" data-role="collapsible-set"></div>
+			<div data-role="popup" id="verification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+				<h3>Reminder</h3>
+				<form id="checkOffForm" class="ui-body ui-body-a">
+
+
+					<div class="ui-grid-a" id="reminderCheck">
+						<p  disabled name="reminder" id="reminder"></p>
+						<div class="ui-block-a"><a href="#"  class="ui-btn" id="reminder-yes">Yes</a></div>
+						<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="reminder-no">No</a></div>
+					</div>
+
+					<div class="ui-grid-a" id = "fVerification">
+
+						<p>Are you ready to sign off?</p>
+
+						<div class="ui-block-a"><a href="#"  class="ui-btn" id="final-yes">Yes</a></div>
+						<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="final-no">No</a></div>
+					</div>
+
+				</form>
+			</div>
+
+<!-- this block is for the final checkoff step -->
+
+		<!--<div data-role="popup" data-rel='popup' data-position-to='window' data-transition='pop' id="finalVerification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+
+			<form id="fVerificationForm" class="ui-body ui-body-a">
+
+				<h3>Are you ready to sign off?</h3>
+
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#"  class="ui-btn" id="final-yes">Yes</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="final-no">No</a></div>
+				</div>
+
+			</form>
+		</div>-->
+		
+		<div data-role="popup" id="makeNote" data-theme="a" data-overlay-theme="b" class="ui-content">
+			<h3>Make a Note</h3>
+			<form id="noteForm" class="ui-body ui-body-a">
+                <input for="noteName" type="hidden" id="stepNumber" value="" />
+				<label for="noteName">Subject <p id="nameError"></p></label>
+				<input type="text" name="noteName" id="noteName" value="" />
+				
+				<label for="note">Note <p id="noteError"></p></label>
+				<textarea name="note" id="note"></textarea>
+				
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#" class="ui-btn" id="save">Save</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="cancel">Cancel</a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>    
+</html>
