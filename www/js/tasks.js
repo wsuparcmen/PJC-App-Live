@@ -80,11 +80,7 @@ $(function(){
 		value: 0
 	});
 });
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        console.log(navigator.vibrate);
-        console.log(navigator.notification);
-    }
+
 
 //This function handles
 jQuery('#final-yes').on('click', function() {
@@ -257,9 +253,13 @@ function expectedDurationExceeded2(){
 
 
     if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            navigator.notification.alert('Time exceeded');
+            navigator.vibrate(1000);
+        }
         onDeviceReady();
-        navigator.notification.alert('Time exceeded');
-        navigator.vibrate(1000);
+
     }
   
     }

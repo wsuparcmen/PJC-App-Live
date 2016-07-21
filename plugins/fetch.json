@@ -1,18 +1,16 @@
 {
     "cordova-plugin-dialogs": {
         "source": {
-            "type": "git",
-            "url": "http://git-wip-us.apache.org/repos/asf/cordova-plugin-dialogs.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-dialogs"
         },
         "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-vibration": {
         "source": {
-            "type": "git",
-            "url": "http://git-wip-us.apache.org/repos/asf/cordova-plugin-vibration.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-vibration"
         },
         "is_top_level": true,
         "variables": {}
