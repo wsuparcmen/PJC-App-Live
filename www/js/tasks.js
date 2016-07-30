@@ -245,6 +245,7 @@ function jobTimer(){
 	}
     document.getElementById("overallTime").innerHTML = "<b>Overall Time - </b>" + pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
 
+    localStorage.setItem("overallTime", pad(hours) + ":" + pad(minutes) + ":" + pad(seconds));
 
     expectedDurationExceeded2()
 }
@@ -286,6 +287,7 @@ function taskTimer(index){
 	}
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
 
+    localStorage.setItem("taskTime", pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds));
 
 }
 function resetTaskTimer(index){
