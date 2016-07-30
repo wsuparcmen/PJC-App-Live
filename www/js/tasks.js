@@ -36,6 +36,8 @@ jQuery(document).ready(function() {
         } 
     });
 
+  
+
     for (var i = 0; i < totalTasks; i++) {
          $("<div data-role='collapsible' class='individualTask' stepnumber='" + (i+1) + "' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
@@ -247,16 +249,25 @@ function jobTimer(){
     expectedDurationExceeded2()
 }
 
+    $('#timeReminder a').on('click', function() {
+        $('#timeReminder').popup("close");
 
+    });
     //This function checks for if the time the task takes exceeds the expected duration.
 function expectedDurationExceeded2(){
 
     if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
+        // This is for future vibrate functionality.
+       // alert("Time exceeded");
+         //    vibrate(1000);
 
-        alert("Time exceeded");
-        navigator.vibrate(1000);
+
+            $('#timeReminder').popup("open");
+
+
+
     }
-  
+
     }
 
 var partialTimer = setInterval(taskTimer, 1000);
