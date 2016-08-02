@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+    document.addEventListener("deviceready", onDeviceReady, false);
     $('#fVerification').hide();
     var uri = 'http://pjcdbrebuild.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
@@ -260,15 +261,20 @@ function expectedDurationExceeded2(){
     if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
         // This is for future vibrate functionality.
        // alert("Time exceeded");
-         //    vibrate(1000);
+        navigator.vibrate(1000);
 
 
             $('#timeReminder').popup("open");
 
 
 
+
     }
 
+    }
+
+    function onDeviceReady() {
+        console.log(navigator.vibrate);
     }
 
 var partialTimer = setInterval(taskTimer, 1000);
