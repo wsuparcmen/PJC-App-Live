@@ -6,6 +6,7 @@
         },
         "is_top_level": true,
         "variables": {}
+<<<<<<< HEAD
     },
     "cordova-plugin-dialogs": {
         "source": {
@@ -14,5 +15,7 @@
         },
         "is_top_level": true,
         "variables": {}
+=======
+>>>>>>> master
     }
 }
