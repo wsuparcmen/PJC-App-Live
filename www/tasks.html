@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="js/jquery-ui.css" />
 	<link rel="stylesheet" href="js/theme.min.css" />
 	<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="./css/global.css"/>
 	<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
 	<script type="text/javascript" src="js/chromeLoading.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
@@ -13,6 +14,7 @@
 	<script type="text/javascript" src="js/tasks.js"></script>
     <script type="text/javascript" src="js/globalFunctions.js"></script>
 	<script type="text/javascript" src="js/routine_notes.js"></script>
+
 	
 	<title>PARC Pocket Job Coach</title>
     <meta charset="utf-8" />
@@ -31,6 +33,53 @@
 		<hr/>
 		
 		<div id="tasksList" data-role="collapsible-set"></div>
+			<div data-role="popup" id="verification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+				<h3>Reminder</h3>
+				<form id="checkOffForm" class="ui-body ui-body-a">
+
+
+					<div class="ui-grid-a" id="reminderCheck">
+						<p  disabled name="reminder" id="reminder"></p>
+						<div class="ui-block-a"><a href="#"  class="ui-btn" id="reminder-yes">Yes</a></div>
+						<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="reminder-no">No</a></div>
+					</div>
+
+					<div class="ui-grid-a" id = "fVerification">
+
+						<p>Are you ready to sign off?</p>
+
+						<div class="ui-block-a"><a href="#"  class="ui-btn" id="final-yes">Yes</a></div>
+						<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="final-no">No</a></div>
+					</div>
+
+
+				</form>
+			</div>
+
+		<div data-role="popup" id="timeReminder" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+			<div class="ui-grid-a">
+				<p>Recommended time exceeded, please hurry..</p>
+
+				<div class="ui-block-a"><a href="#"  class="ui-btn" >OK</a></div>
+			</div>
+		</div>
+
+
+		<!-- this block is for the final checkoff step -->
+
+		<!--<div data-role="popup" data-rel='popup' data-position-to='window' data-transition='pop' id="finalVerification" data-theme="a" data-overlay-theme="a" class="ui-content reminder-form">
+
+			<form id="fVerificationForm" class="ui-body ui-body-a">
+
+				<h3>Are you ready to sign off?</h3>
+
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><a href="#"  class="ui-btn" id="final-yes">Yes</a></div>
+					<div class="ui-block-b"><a href="#" data-rel="back" class="ui-btn" id="final-no">No</a></div>
+				</div>
+
+			</form>
+		</div>-->
 		
 		<div data-role="popup" id="makeNote" data-theme="a" data-overlay-theme="b" class="ui-content">
 			<h3>Make a Note</h3>

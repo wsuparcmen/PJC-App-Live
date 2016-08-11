@@ -1,5 +1,10 @@
 jQuery(document).ready(function() {
-    var uri = 'http://pjc.gear.host/api/';
+<<<<<<< HEAD
+   
+=======
+    $('#fVerification').hide();
+    var uri = 'http://pjcdbrebuild.gear.host/api/';
+>>>>>>> master
     var loginToken = window.localStorage.getItem("token");
     var totalTasks = 0;
     var taskNames = [];
@@ -12,6 +17,8 @@ jQuery(document).ready(function() {
     var jobStartTime = formatCurrentDateTime();
     var jobNotesArray;
     var taskNotesArray;
+    var completedTasks = 0;
+    var reminderArray = [];
     document.getElementById("routineName").innerHTML = jobTitle;
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
@@ -22,14 +29,23 @@ jQuery(document).ready(function() {
                 taskDescriptions[i] = item.Tasks[i].taskDescription;
                 expectedDurations[i] = item.Tasks[i].expectedDuration;
                 parentOrCoach = item.creatorUserName;
+
+                if(item.Tasks[i].Feedbacks[0] != undefined) {
+                    reminderArray[i] = (item.Tasks[i].Feedbacks[0].feedbackMessage) || "";
+                }else if(item.Tasks[i].Feedbacks[0] == undefined)
+                {
+                    reminderArray[i] = "No Reminders";
+                }
             }
         } 
     });
-    var completedTasks = 0;
+
+  
+
     for (var i = 0; i < totalTasks; i++) {
          $("<div data-role='collapsible' class='individualTask' stepnumber='" + (i+1) + "' id='task" + i + "'>" +
 				"<h3 id='taskName'>" + taskNames[i] + "</h3>" +
-				"<button href='#' data-ajax='false' class='ui-btn finishTask'>Finish Task</button>" +
+				"<a href='#verification' data-rel='popup' data-position-to='window' data-transition='pop' class='ui-btn finishTask'>Finish Task</a>" +
                 "<table style='width:100%'>" +
                     "<tr>" +
 						"<td><b>Task Time</b></td>" +
@@ -61,7 +77,9 @@ jQuery(document).ready(function() {
             $('#tasksList').collapsibleset('refresh');
     }
     document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
+
     $(".finishTask:not(:first)").prop("disabled", true);
+    $("h3:not(:first)").addClass("avoid-clicks");
 
 $(function(){
 	$( "#progressbar" ).progressbar({
@@ -69,22 +87,32 @@ $(function(){
 	});
 });
 
-jQuery('.finishTask').on('click', function() {
-    
+//This function handles
+jQuery('#final-yes').on('click', function() {
+
+    // here we are hiding and showing checkoff steps again
+
+    $('#fVerification').hide();
+    $('#reminderCheck').show();
+
     if(completedTasks < totalTasks){
 		resetTaskTimer();
 		keepAliveTwo(loginToken);
 		var progressbar = $( "#progressbar" );
 		var total = progressbar.progressbar("value");
 		progressbar.progressbar("value", total + (100 / totalTasks));
-        
         $(this).prop('disabled', true);
-        $('#task' + completedTasks).collapsible({collapsed: true});
+        $('#task' + completedTasks).collapsible({collapsed: true}).addClass("avoid-clicks");
+       // $(this).parents(':eq(0)').siblings("h3").addClass("avoid-clicks");
+       // $('#task'+ completedTasks).addClass("avoid-clicks");
 		completedTasks++;
         $('#task' + completedTasks).collapsible({collapsed: false});
         $('.finishTask').each(function(index) {
              if (completedTasks === index) {
+
+                 $(this).parents(':eq(0)').siblings().removeClass("avoid-clicks");
                 $(this).prop('disabled', false);
+
              }
         });
         document.getElementById("progress").innerHTML = "Overall Progress - " + completedTasks + "/" + totalTasks;
@@ -109,8 +137,50 @@ jQuery('.finishTask').on('click', function() {
             "</p>").insertAfter('#tasksList');
 		}        
 	}
-    keepAliveTwo(loginToken); 
+
+
+    keepAliveTwo(loginToken);
+    $( "#verification" ).popup("close");
 });
+
+
+    $(".finishTask").on('click',function(){
+        console.log(completedTasks);
+        $("#reminder").text(reminderArray[completedTasks]);
+    });
+
+
+
+
+
+    // When a user clicks "No" on a reminder popup it i will disable the final verification pop up from showing up.
+    $("#reminder-no").on('click',function(){
+        $( "#finalVerification" ).popup( "option", "disabled", true );
+    });
+
+    // Whe a user clicks "yes" on a reminder popup it will enable the final popup.
+    $("#reminder-yes").on('click',function(){
+        //$( "#finalVerification" ).popup( "option", "disabled", false );
+        //$("#verification").popup("close");
+        $('#reminderCheck').hide();
+    $('#fVerification').show();
+
+
+    });
+
+    $("#final-no").on('click',function(){
+        $('#reminderCheck').show();
+        $('#fVerification').hide();
+
+
+    });
+
+    // This causes the final verification popup to show af
+    /*$( "#verification" ).on({
+        popupafterclose: function() {
+            setTimeout(function() { $( "#finalVerification" ).popup( "open" ) }, 100 );
+        }
+    });*/
 
 jQuery('.make-note').on('click', function() {
     var self = jQuery(this);
@@ -178,7 +248,32 @@ function jobTimer(){
 		minutes = 0;
 	}
     document.getElementById("overallTime").innerHTML = "<b>Overall Time - </b>" + pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
+
+    localStorage.setItem("overallTime", pad(hours) + ":" + pad(minutes) + ":" + pad(seconds));
+
+    expectedDurationExceeded2()
 }
+
+    $('#timeReminder a').on('click', function() {
+        $('#timeReminder').popup("close");
+
+    });
+    //This function checks for if the time the task takes exceeds the expected duration.
+function expectedDurationExceeded2(){
+
+    if(pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds)== expectedDurations[completedTasks]) {
+        // This is for future vibrate functionality.
+       // alert("Time exceeded");
+         //    vibrate(1000);
+
+
+            $('#timeReminder').popup("open");
+
+
+
+    }
+
+    }
 
 var partialTimer = setInterval(taskTimer, 1000);
 var tSeconds = 0;
@@ -195,6 +290,9 @@ function taskTimer(index){
 		tMinutes = 0;
 	}
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
+
+    localStorage.setItem("taskTime", pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds));
+
 }
 function resetTaskTimer(index){
     document.getElementById("taskTime" + completedTasks).innerHTML = pad(tHours) + ":" + pad(tMinutes) + ":" + pad(tSeconds);
