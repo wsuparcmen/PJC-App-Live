@@ -1,0 +1,95 @@
+
+<!--
+// **************************************
+// *  Copied structure from notes.html  *
+// **************************************
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="js/theme.min.css" />
+    <link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/chromeLoading.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="js/addtask.js"></script>
+    <script type="text/javascript" src="js/globalFunctions.js"></script>
+
+    <title>PARC Pocket Job Coach</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div data-role="header" data-position="fixed">
+    <a href="addJob.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+    <h1 class="app-name">PARC Pocket Job Coach</h1>
+
+    <a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+    <div data-role="popup" id="menu">
+        <ul data-role="listview" data-inset="true">
+            <li><a href="#" onclick="account()">My Account</a></li>
+            <li><a href="#" onclick="logout()">Log Out</a></li>
+        </ul>
+    </div>
+</div>
+
+<div data-role="main" class="ui-content">
+    <h1>Add Task</h1>
+
+    <form class="ui-body ui-body-a" id="taskForm">
+        <label for="taskName">Name</label>
+        <input type="text" name="taskName" id="taskName" />
+
+        <label for="taskDesc">Description</label>
+        <textarea cols="40" rows="100" name="task" id="taskDesc"></textarea>
+
+        <label for="taskCat">Category</label>
+        <select name="taskCat" id="taskCat">
+            <option value="Custodial">Custodial</option>
+            <option value="Hosting">Hosting</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Gardening">Gardening</option>
+            <option value="Help">Help</option>
+        </select>
+
+        <label for="taskTimed">Timed</label>
+        <input type="checkbox" name="taskTimed" id="taskTimed"/>
+
+        <label for="taskExpected">Expected Duration (HH:MM:SS)</label>
+        <input type="text" name="taskExpected" id="taskExpected"/>
+		<div id= "feedBacks"> 
+		</div> 
+		<div class="ui-block-solo">
+                <a href="#" onclick="addFeedback()" data-ajax="false" class="ui-btn ui-icon-check ui-btn-icon-top">
+                    Add Feedback
+                </a>
+            </div>
+
+        <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a"><a onclick="Submit()" class="ui-btn" id="save">Save</a></div>
+            <div class="ui-block-b"><a onclick="window.history.back()" class="ui-btn" id="cancel">Cancel</a></div>
+        </div>
+    </form>
+    <!-- <button onClick="Submit()">Test</button> -->
+
+    <div id="emptyTask" class="ui-content" data-role="popup" data-theme="a">
+        <h3>???</h3>
+        <p id="message"></p>
+        <a id="okay" class="ui-btn" data-rel="back">Okay</a>
+    </div>
+</div>
+
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a href="ParentCoachSplash.html" data-ajax="false" data-icon="home">Home</a></li>
+            <!-- <li><a href="contact.html" data-ajax="false" data-icon="phone">Contact</a></li> -->
+        </ul>
+    </div>
+</div>
+</body>
+</html>

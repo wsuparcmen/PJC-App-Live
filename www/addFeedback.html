@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="js/theme.min.css" />
+    <link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/chromeLoading.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="js/globalFunctions.js"></script>
+    <script type="text/javascript" src="js/addFeedback.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div data-role="header" data-position="fixed">
+    <a onclick="back()" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+    <h1 class="app-name">PARC Pocket Job Coach</h1>
+
+    <a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+    <div data-role="popup" id="menu">
+        <ul data-role="listview" data-inset="true">
+            <li><a href="#" onclick="account()">My Account</a></li>
+            <li><a href="#" onclick="logout()">Log Out</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--<div id="taskList" data-role="main" class="ui-content"></div> -->
+<div data-role="main" class="ui-content">
+    <h1>Add Feedback</h1>
+
+    <form class="ui-body ui-body-a" id="feedForm">
+        <label for="feedName">Title</label>
+        <input type="text" id="feedName" />
+
+        <label for="feedMessage">Message</label>
+        <textarea cols="40" rows="100" id="feedMessage"></textarea>
+
+        <!--TODO: Implement video, audio, picture, and list into mediaType-->
+        <label class="ui-screen-hidden"><input id="feedMedia" type="text" disabled value="text"></label>
+
+        <label class="ui-screen-hidden"><input id="feedType" type="text" disabled value="positive"></label>
+
+        <div id="submitEditFeedback" class="ui-grid-a ui-responsive">
+            <div class="ui-block-solo">
+                <a href="#" onclick="addFeedback()" data-ajax="false" class="ui-btn ui-icon-check ui-btn-icon-top">
+                    Submit
+                </a>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a href="ParentCoachSplash.html" data-ajax="false" data-icon="home">Home</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="js/theme.min.css" />
+    <link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="css/splash.css" />
+    <script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="js/chromeLoading.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="js/globalFunctions.js"></script>
+    <script type="text/javascript" src="js/routine_notes.js"></script>
+    <script type="text/javascript" src="js/userinfo.js"></script>
+
+    <title>PARC Pocket Job Coach</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div data-role="header" data-position="fixed">
+    <a href="userlist.html" data-ajax="false" class="ui-btn ui-icon-carat-l ui-btn-icon-left">Back</a>
+    <h1 class="app-name">PARC Pocket Job Coach</h1>
+
+    <a href="#menu" data-rel="popup" data-role="button" data-inline="true" data-icon="gear" class="ui-btn-right">Options</a>
+    <div data-role="popup" id="menu">
+        <ul data-role="listview" data-inset="true">
+            <li><a href="#" onclick="account()">My Account</a></li>
+            <li><a href="#" onclick="logout()">Log Out</a></li>
+        </ul>
+    </div>
+</div>
+
+<div data-role="main" class="ui-content">
+    <h3>Contact info for: <strong id="userName"></strong></h3>
+    <form id="userContact" class="ui-body ui-body-a">
+        <div>Name: <h4 id="name"></h4></div>
+        <div>Phone Number: <h4 id="phone"></h4></div>
+        <div>Email: <h4 id="email"></h4> </div>
+    </form>
+</div>
+
+<script>
+    var data = JSON.parse(localStorage.getItem("UserInfo"));
+    var username = document.getElementById("name");
+    var phone = document.getElementById("phone");
+    var email = document.getElementById("email");
+    var user = document.getElementById("userName");
+    user.innerHTML = data[0];
+    username.innerHTML = data[0];
+    phone.innerHTML = data[1];
+    email.innerHTML = data[2];
+</script>
+
+<div data-role="footer" data-position="fixed">
+<div data-role="navbar">
+    <ul>
+        <li><a href="ParentCoachSplash.html" data-ajax="false" data-icon="home">Home</a></li>
+    </ul>
+</div>
+</div>
+
+</body>
+</html>
