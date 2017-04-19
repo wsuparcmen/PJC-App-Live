@@ -8,13 +8,13 @@ jQuery(document).ready(function() {
 		window.localStorage.removeItem("parentInfo");
 		window.localStorage.removeItem("userName");
         window.location.href = "Login.html";
-    }
+    };
     window.account = function() {
         window.location.href = "account.html";
-    }
+    };
     window.keepAliveTwo = function(tempToken, tempUrl) {
         var theUrl = tempUrl;
-        var keepAliveUri = 'http://pjcdbrebuild.gear.host/api/Login';
+        var keepAliveUri = 'http://pjcdbrebuild2.gear.host/api/Login';
         var theToken = tempToken;
         
         $.getJSON(keepAliveUri,

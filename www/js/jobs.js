@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://pjcdbrebuild2.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
       
 	setTimeout(function() {
@@ -9,10 +9,11 @@ jQuery(document).ready(function() {
     displayAllRoutinesFromStorage();
             
     function displayAllRoutinesFromStorage() {
+        //console.log(localStorage.getItem('routineList'));
         var routineList = JSON.parse(localStorage.getItem('routineList'));
 
         $.each(routineList, function (key, item) {
-            console.log(item.routineTitle);
+            //console.log(item.routineTitle);
             $("<div data-role='collapsible'>" +
 				"<h3>" + item.routineTitle + "</h3>" +
 				"<a href='tasks.html' data-ajax='false' class='ui-btn begin-button' style='background-color:#1de27c;'>Begin Routine</a>" +

@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-	var uri = 'http://pjcdbrebuild.gear.host/api/';
+	var uri = 'http://pjcdbrebuild2.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
 	$.getJSON(uri + "JobCoach",
 		{token: loginToken},
@@ -18,7 +18,7 @@ jQuery(document).ready(function () {
         function (data) {
           // On success, 'data' contains Parent Info.
           localStorage.setItem('parentInfo', JSON.stringify(data));
-            console.log(localStorage.getItem('parentInfo'));
+            //console.log(localStorage.getItem('parentInfo'));
 			displayJobCoachInfo();
         }
 		).error(function() {
@@ -35,8 +35,8 @@ function displayJobCoachInfo() {
         var jobcoach = JSON.parse(localStorage.getItem('jobcoach'));
 		var parentInfo = JSON.parse(localStorage.getItem('parentInfo'));
         $.each(jobcoach, function (key, item) {
-			console.log(item);
-			console.log(key);
+			//console.log(item);
+			//console.log(key);
 			if(key=="userName"){
 				$('#firstName').text(item);
 			}
@@ -49,8 +49,8 @@ function displayJobCoachInfo() {
             
         });
 		$.each(parentInfo, function (key, item) {
-			console.log(item);
-			console.log(key);
+			//console.log(item);
+			//console.log(key);
 			if(key=="userName"){
 				$('#parentFirstName').text(item);
 			}

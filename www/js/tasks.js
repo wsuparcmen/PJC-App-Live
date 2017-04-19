@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
     document.addEventListener("deviceready", onDeviceReady, false);
     $('#fVerification').hide();
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://pjcdbrebuild2.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     var totalTasks = 0;
     var taskNames = [];
@@ -17,12 +17,13 @@ jQuery(document).ready(function() {
     var completedTasks = 0;
     var reminderArray = [];
     document.getElementById("routineName").innerHTML = jobTitle;
+
     $.each(routineList, function (key, item) {
         if (item.routineTitle === jobTitle) {
-            console.log(item);
+            //console.log(item);
             totalTasks = item.Tasks.length;
             for (var i = 0; i < totalTasks; i++) {
-                taskNames[i] = item.Tasks[i].taskName
+                taskNames[i] = item.Tasks[i].taskName;
                 taskDescriptions[i] = item.Tasks[i].taskDescription;
                 expectedDurations[i] = item.Tasks[i].expectedDuration;
                 parentOrCoach = item.creatorUserName;

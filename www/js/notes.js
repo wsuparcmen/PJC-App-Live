@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
 });
 
 $(document).on("pagecreate", function(){
-    var uri = 'http://pjcdbrebuild.gear.host/api/';
+    var uri = 'http://pjcdbrebuild2.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     
 	$("#save").click(function(){
@@ -19,8 +19,8 @@ $(document).on("pagecreate", function(){
 		}
         
         if (name != "" && note !== "") {
-            console.log(uri);
-            console.log(loginToken);
+            //console.log(uri);
+            //console.log(loginToken);
             var userNote = {
                 'noteTitle':name,
                 'noteMessage':note};
@@ -31,7 +31,7 @@ $(document).on("pagecreate", function(){
                 url: uri + "Note?token=" + loginToken,
                 success: function(data){
                     document.getElementById("noteForm").reset();
-                    window.location.href = "splash.html";            
+                    window.location.href = "splash.html";
                 },
                 error: function(){
                     console.log("NOTE DID NOT UPLOAD");
