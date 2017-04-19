@@ -1,7 +1,7 @@
 //window.addEventListener('load', loadHandler);
 function submitLogin() {
    jQuery(document).ready(function() {
-	   var uri = 'http://pjcdbrebuild2.gear.host/api/Login';
+	   var uri = 'http://http://pjclive.gear.host//api/Login';
 	   var day = new Date();
 	   var now = day.getTime();
      var name=$('#username').val();

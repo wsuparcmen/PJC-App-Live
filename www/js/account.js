@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://pjcdbrebuild2.gear.host/api/Login';
+    var uri = 'http://http://pjclive.gear.host//api/Login';
     var token = window.localStorage.getItem("token");
     var stToken = window.localStorage.getItem("token").toString();
     var num = stToken.search(",");
