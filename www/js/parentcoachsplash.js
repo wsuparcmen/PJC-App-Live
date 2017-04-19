@@ -9,7 +9,7 @@ jQuery(document).ready(function () {
     document.getElementById("userName").value = localStorage.getItem('name');
 
     var loginToken = window.localStorage.getItem("token");
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
 
     $.getJSON(uri + "JobCoach",
         {token: loginToken},
@@ -21,7 +21,7 @@ jQuery(document).ready(function () {
     });
 
     function keepAlive(tempToken) {
-        var keepAliveUri = 'http://http://pjclive.gear.host//api/Login';
+        var keepAliveUri = 'http://pjclive.gear.host/api/Login';
         var token = tempToken;
         $.getJSON(keepAliveUri,
             {token: token},

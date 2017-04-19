@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
     document.addEventListener("deviceready", onDeviceReady, false);
     $('#fVerification').hide();
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
     var totalTasks = 0;
     var taskNames = [];

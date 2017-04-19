@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
     var loginToken = window.localStorage.getItem("token");
       
 	setTimeout(function() {

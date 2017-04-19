@@ -12,7 +12,7 @@ function deleteJob(){
     var job = JSON.parse(localStorage.getItem('currentRoutine'));
     var token = localStorage.getItem('token');
     //console.log(job);
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
     if(job == null) return;
     jQuery.ajax({
         type: 'POST',
@@ -89,7 +89,7 @@ function addTask()
 //ajax for localStorage
 function editJob() {
     var currentRoutine = JSON.parse(window.localStorage.getItem('currentRoutine'));
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
     console.log(currentRoutine);
 
     var jobTitle = document.getElementById("jobTitle").value;

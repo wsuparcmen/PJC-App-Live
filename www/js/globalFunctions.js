@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
     };
     window.keepAliveTwo = function(tempToken, tempUrl) {
         var theUrl = tempUrl;
-        var keepAliveUri = 'http://http://pjclive.gear.host//api/Login';
+        var keepAliveUri = 'http://pjclive.gear.host/api/Login';
         var theToken = tempToken;
         
         $.getJSON(keepAliveUri,

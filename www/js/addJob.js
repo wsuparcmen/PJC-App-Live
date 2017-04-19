@@ -110,7 +110,7 @@ function addTask()
 
 function addJob()
 {
-    var uri = 'http://http://pjclive.gear.host//api/';
+    var uri = 'http://pjclive.gear.host/api/';
     var jobTitle=$('#jobTitle').val();
     var jobTimed=document.getElementById('jobTimed').checked;
     var jobExpected=$('#jobExpected').val();
